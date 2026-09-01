@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://pistk15oy8gx"]
+
+[ext_resource type="Script" uid="uid://dib6nsny2ruq0" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://6pplh7ycept0" path="res://player.tscn" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://bqbomtwbhtlkw" path="res://target_spawner.gd" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://c6tv52eh51mj7" path="res://target.tscn" id="6_7mycd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7eeuk"]
+
+[sub_resource type="Sky" id="Sky_lquwl"]
+sky_material = SubResource("ProceduralSkyMaterial_7eeuk")
+
+[sub_resource type="Environment" id="Environment_pg1rn"]
+background_mode = 2
+sky = SubResource("Sky_lquwl")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pg1rn"]
+size = Vector2(20, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fd5hs"]
+size = Vector3(20, 20, 20)
+
+[node name="Main" type="Node3D" unique_id=1561954929]
+script = ExtResource("1_1bvp3")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=117995636]
+environment = SubResource("Environment_pg1rn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=307096194]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="StartXR" parent="." unique_id=1278618863 instance=ExtResource("1_ig7tw")]
+
+[node name="XROrigin3D" parent="." unique_id=31731761 instance=ExtResource("2_h2yge")]
+
+[node name="TargetSpawner" type="Node3D" parent="." unique_id=1593928303]
+script = ExtResource("5_lquwl")
+target_scene = ExtResource("6_7mycd")
+
+[node name="Player" parent="." unique_id=123003904 instance=ExtResource("2_h2yge")]
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1049371512]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1039040662]
+mesh = SubResource("PlaneMesh_pg1rn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=650341817]
+shape = SubResource("BoxShape3D_fd5hs")

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c6tv52eh51mj7"]
+
+[ext_resource type="Script" uid="uid://qdiersyokvwk" path="res://target.gd" id="1_t2jmu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rphhy"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_fd5hs"]
+material = SubResource("StandardMaterial3D_rphhy")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fd5hs"]
+
+[node name="Target" type="Area3D" unique_id=552280767]
+script = ExtResource("1_t2jmu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=192723528]
+mesh = SubResource("SphereMesh_fd5hs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=69186234]
+shape = SubResource("SphereShape3D_fd5hs")
