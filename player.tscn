@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://6pplh7ycept0"]
 
+[ext_resource type="Shader" uid="uid://b7ft4jd13g6ep" path="res://barrel_distortion.gdshader" id="1_1jxqw"]
 [ext_resource type="Script" uid="uid://dfvnuh0vyxrlc" path="res://left_hand_controller.gd" id="1_hqtel"]
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://ck5oykgd3dgn0" path="res://bullet.tscn" id="2_2hs0m"]
@@ -7,9 +8,23 @@
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="2_i3pqv"]
 [ext_resource type="Script" uid="uid://buagi0q1adb82" path="res://right_hand_controller.gd" id="4_sweqy"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7eeuk"]
+render_priority = 0
+shader = ExtResource("1_1jxqw")
+shader_parameter/distortion_strength = 0.35
+shader_parameter/distortion_radius = 1.2
+
+[sub_resource type="QuadMesh" id="QuadMesh_fd5hs"]
+material = SubResource("ShaderMaterial_7eeuk")
+size = Vector2(2, 2)
+
 [node name="XROrigin3D" type="XROrigin3D" unique_id=31731761]
 
 [node name="XRCamera3D" type="XRCamera3D" parent="." unique_id=929623543]
+
+[node name="DistortionQuad" type="MeshInstance3D" parent="XRCamera3D" unique_id=1236277126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("QuadMesh_fd5hs")
 
 [node name="LeftHandController" type="XRController3D" parent="." unique_id=1714043104]
 tracker = &"left_hand"
