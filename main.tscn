@@ -199,7 +199,7 @@ radius = 1.4
 material = SubResource("StandardMaterial3D_o2a4n")
 
 [node name="DistortionPanel" type="Node3D" parent="." unique_id=223524617]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.4, -1.2)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.4, 1.4, -1.2)
 script = ExtResource("6_272bh")
 distortion_material = SubResource("ShaderMaterial_5vw27")
 
@@ -225,10 +225,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="Distortion Settings" type="Label" parent="DistortionPanel/UIViewport/UIRoot/VBoxContainer" unique_id=950768767]
 layout_mode = 2
 text = "Distortion Settings"
+horizontal_alignment = 1
 
 [node name="Vignette Strength" type="Label" parent="DistortionPanel/UIViewport/UIRoot/VBoxContainer" unique_id=555922469]
 layout_mode = 2
