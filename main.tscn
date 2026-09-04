@@ -45,15 +45,16 @@ shader_parameter/vignette_softness = 0.45
 shader_parameter/edge_distortion = 0.12
 shader_parameter/distortion_power = 1.8
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_a4gr7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_c8ykw"]
+viewport_path = NodePath("DistortionPanel/UIViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6ucc"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mq2jd"]
 resource_local_to_scene = true
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_a4gr7")
+albedo_texture = SubResource("ViewportTexture_c8ykw")
 
-[sub_resource type="QuadMesh" id="QuadMesh_fd5hs"]
-material = SubResource("StandardMaterial3D_s6ucc")
+[sub_resource type="QuadMesh" id="QuadMesh_nml27"]
+material = SubResource("StandardMaterial3D_mq2jd")
 size = Vector2(1.2, 0.9)
 
 [node name="Main" type="Node3D" unique_id=1561954929]
@@ -203,7 +204,7 @@ script = ExtResource("6_272bh")
 distortion_material = SubResource("ShaderMaterial_5vw27")
 
 [node name="PanelMesh" type="MeshInstance3D" parent="DistortionPanel" unique_id=4783777]
-mesh = SubResource("QuadMesh_fd5hs")
+mesh = SubResource("QuadMesh_nml27")
 
 [node name="UIViewport" type="SubViewport" parent="DistortionPanel" unique_id=2117683949]
 transparent_bg = true
