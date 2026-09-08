@@ -204,6 +204,7 @@ script = ExtResource("6_272bh")
 distortion_material = SubResource("ShaderMaterial_5vw27")
 
 [node name="PanelMesh" type="MeshInstance3D" parent="DistortionPanel" unique_id=4783777]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 mesh = SubResource("QuadMesh_nml27")
 
 [node name="UIViewport" type="SubViewport" parent="DistortionPanel" unique_id=2117683949]
