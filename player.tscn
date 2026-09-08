@@ -4,10 +4,9 @@
 [ext_resource type="Script" uid="uid://dfvnuh0vyxrlc" path="res://left_hand_controller.gd" id="1_hqtel"]
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://ck5oykgd3dgn0" path="res://bullet.tscn" id="2_2hs0m"]
-[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="2_hqtel"]
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="2_i3pqv"]
 [ext_resource type="Script" uid="uid://buagi0q1adb82" path="res://right_hand_controller.gd" id="4_sweqy"]
-[ext_resource type="Script" uid="uid://durng6tl5083g" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/laserray.gd" id="8_dw050"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="5_1jxqw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7eeuk"]
 render_priority = 0
@@ -38,21 +37,15 @@ bullet_scene = ExtResource("2_2hs0m")
 [node name="LeftHand" parent="LeftHandController" unique_id=963307803 instance=ExtResource("1_onrkg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13581425, 0, 0.0033923984)
 
-[node name="FunctionPickup" parent="LeftHandController/LeftHand" unique_id=239188129 instance=ExtResource("2_hqtel")]
+[node name="FunctionPointer" parent="LeftHandController" unique_id=1583302090 instance=ExtResource("5_1jxqw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02, 0.05, -0.1)
 
 [node name="RightHandController" type="XRController3D" parent="." unique_id=197870439]
 tracker = &"right_hand"
 script = ExtResource("4_sweqy")
 bullet_scene = ExtResource("2_2hs0m")
 
-[node name="RightHand" parent="RightHandController" unique_id=1199403658 instance=ExtResource("2_i3pqv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10430491, 0, 0)
-script = ExtResource("8_dw050")
-ui_viewport_path = NodePath("")
-panel_mesh_path = NodePath("")
+[node name="RightHand" parent="RightHandController" unique_id=1199482631 instance=ExtResource("2_i3pqv")]
 
-[node name="FunctionPickup" parent="RightHandController/RightHand" unique_id=1951988662 instance=ExtResource("2_hqtel")]
-
-[node name="LaserRay" type="RayCast3D" parent="RightHandController" unique_id=563032477]
-target_position = Vector3(0, 0, -3)
-collide_with_areas = true
+[node name="FunctionPointer" parent="RightHandController" unique_id=242688433 instance=ExtResource("5_1jxqw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02, 0.05, -0.1)

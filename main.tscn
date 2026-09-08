@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://6pplh7ycept0" path="res://player.tscn" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://bqbomtwbhtlkw" path="res://target_spawner.gd" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c6tv52eh51mj7" path="res://target.tscn" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://eavk7267igp7" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="6_272bh"]
+[ext_resource type="PackedScene" uid="uid://dq3ja8m60jkuy" path="res://distortion_ui.tscn" id="7_5vw27"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7eeuk"]
 sky_top_color = Color(0.43137255, 0.70980394, 1, 1)
@@ -33,23 +35,6 @@ albedo_color = Color(0.54509807, 0.3529412, 0.16862746, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o2a4n"]
 albedo_color = Color(0.18039216, 0.54509807, 0.34117648, 1)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_7eeuk"]
-viewport_path = NodePath("DistortionPanel/UIViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
-resource_local_to_scene = true
-cull_mode = 2
-shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_7eeuk")
-
-[sub_resource type="QuadMesh" id="QuadMesh_o2a4n"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_lquwl")
-size = Vector2(1.2, 0.9)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_pg1rn"]
-size = Vector3(1.2, 9, 0.05)
 
 [node name="Main" type="Node3D" unique_id=1561954929]
 script = ExtResource("1_1bvp3")
@@ -192,92 +177,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2, 0)
 radius = 1.4
 material = SubResource("StandardMaterial3D_o2a4n")
 
-[node name="DistortionPanel" type="Node3D" parent="." unique_id=169229768]
+[node name="DistortionPanel" type="Node3D" parent="." unique_id=903693354]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.4, -1.3)
-
-[node name="PanelMesh" type="MeshInstance3D" parent="DistortionPanel" unique_id=762756842]
-mesh = SubResource("QuadMesh_o2a4n")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="DistortionPanel/PanelMesh" unique_id=1888429936]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DistortionPanel/PanelMesh/StaticBody3D" unique_id=572818018]
-shape = SubResource("BoxShape3D_pg1rn")
-
-[node name="UIViewport" type="SubViewport" parent="DistortionPanel" unique_id=361174024]
-transparent_bg = true
-size = Vector2i(512, 384)
-
-[node name="UIRoot" type="Control" parent="DistortionPanel/UIViewport" unique_id=1633857144]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="DistortionPanel/UIViewport/UIRoot" unique_id=2144886840]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Distortion Settings" type="Label" parent="DistortionPanel/UIViewport/UIRoot/VBoxContainer" unique_id=1467724029]
-layout_mode = 2
-text = "Distortion Settings"
-horizontal_alignment = 1
-
-[node name="Vignette Strength" type="Label" parent="DistortionPanel/UIViewport/UIRoot/VBoxContainer" unique_id=2016226544]
-layout_mode = 2
-text = "Vignette Strength"
-
-[node name="VignetteStrengthSlider" type="HSlider" parent="DistortionPanel/UIViewport/UIRoot/VBoxContainer" unique_id=367437595]
-layout_mode = 2
-max_value = 2.0
-step = 0.05
-value = 0.75
-
-[node name="LabelVignette Radius" type="Label" parent="DistortionPanel/UIViewport/UIRoot/VBoxContainer" unique_id=1985829207]
-layout_mode = 2
-text = "Vignette Radius"
-
-[node name="VignetteRadiusSlider" type="HSlider" parent="DistortionPanel/UIViewport/UIRoot/VBoxContainer" unique_id=356751276]
-layout_mode = 2
-min_value = 0.5
-max_value = 1.5
-step = 0.05
-value = 0.85
-
-[node name="Vignette Softness" type="Label" parent="DistortionPanel/UIViewport/UIRoot/VBoxContainer" unique_id=282274379]
-layout_mode = 2
-text = "Vignette Softness"
-
-[node name="VignetteSoftnessSlider" type="HSlider" parent="DistortionPanel/UIViewport/UIRoot/VBoxContainer" unique_id=1463245488]
-layout_mode = 2
-min_value = 0.1
-max_value = 1.0
-step = 0.05
-value = 0.44999999999999996
-
-[node name="Edge Distortion" type="Label" parent="DistortionPanel/UIViewport/UIRoot/VBoxContainer" unique_id=1773485602]
-layout_mode = 2
-text = "Edge Distortion"
-
-[node name="EdgeDistortionSlider" type="HSlider" parent="DistortionPanel/UIViewport/UIRoot/VBoxContainer" unique_id=180573583]
-layout_mode = 2
-max_value = 0.5
-step = 0.01
-value = 0.12
-
-[node name="Distortion Power" type="Label" parent="DistortionPanel/UIViewport/UIRoot/VBoxContainer" unique_id=1310284259]
-layout_mode = 2
-text = "Distortion Power"
-
-[node name="DistortionPowerSlider" type="HSlider" parent="DistortionPanel/UIViewport/UIRoot/VBoxContainer" unique_id=1393924330]
-layout_mode = 2
-min_value = 1.0
-max_value = 3.0
-step = 0.1
-value = 1.8
+script = ExtResource("6_272bh")
+screen_size = Vector2(1.2, 0.9)
+scene = ExtResource("7_5vw27")
+viewport_size = Vector2(512, 384)
+transparent = 1
+alpha_scissor_threshold = 0.25
+unshaded = false
+filter = true
+scene_properties_keys = PackedStringArray()
+metadata/_custom_type_script = "uid://eavk7267igp7"

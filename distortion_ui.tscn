@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://dq3ja8m60jkuy"]
+
+[ext_resource type="Script" uid="uid://ccsgitm2l4g6u" path="res://distortion_ui.gd" id="1_0n5hv"]
+[ext_resource type="Shader" uid="uid://b7ft4jd13g6ep" path="res://barrel_distortion.gdshader" id="2_gi4br"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cu1l5"]
+render_priority = 0
+shader = ExtResource("2_gi4br")
+shader_parameter/vignette_strength = 0.75
+shader_parameter/vignette_radius = 0.85
+shader_parameter/vignette_softness = 0.45
+shader_parameter/edge_distortion = 0.12
+shader_parameter/distortion_power = 1.8
+
+[node name="DistortionUI" type="Control" unique_id=465043266]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0n5hv")
+distortion_material = SubResource("ShaderMaterial_cu1l5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=806221651]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Distortion Settings" type="Label" parent="VBoxContainer" unique_id=821835969]
+layout_mode = 2
+text = "Distortion Settings"
+horizontal_alignment = 1
+
+[node name="Vignette Strength" type="Label" parent="VBoxContainer" unique_id=1802858530]
+layout_mode = 2
+text = "Vignette Strength"
+
+[node name="VignetteStrengthSlider" type="HSlider" parent="VBoxContainer" unique_id=750660830]
+layout_mode = 2
+max_value = 2.0
+step = 0.05
+value = 0.75
+
+[node name="LabelVignette Radius" type="Label" parent="VBoxContainer" unique_id=824238007]
+layout_mode = 2
+text = "Vignette Radius"
+
+[node name="VignetteRadiusSlider" type="HSlider" parent="VBoxContainer" unique_id=1736029103]
+layout_mode = 2
+min_value = 0.5
+max_value = 1.5
+step = 0.05
+value = 0.85
+
+[node name="Vignette Softness" type="Label" parent="VBoxContainer" unique_id=460488678]
+layout_mode = 2
+text = "Vignette Softness"
+
+[node name="VignetteSoftnessSlider" type="HSlider" parent="VBoxContainer" unique_id=1785972656]
+layout_mode = 2
+min_value = 0.1
+max_value = 1.0
+step = 0.05
+value = 0.44999999999999996
+
+[node name="Edge Distortion" type="Label" parent="VBoxContainer" unique_id=2127344109]
+layout_mode = 2
+text = "Edge Distortion"
+
+[node name="EdgeDistortionSlider" type="HSlider" parent="VBoxContainer" unique_id=590921092]
+layout_mode = 2
+max_value = 0.5
+step = 0.01
+value = 0.12
+
+[node name="Distortion Power" type="Label" parent="VBoxContainer" unique_id=391939269]
+layout_mode = 2
+text = "Distortion Power"
+
+[node name="DistortionPowerSlider" type="HSlider" parent="VBoxContainer" unique_id=1613466560]
+layout_mode = 2
+min_value = 1.0
+max_value = 3.0
+step = 0.1
+value = 1.8
