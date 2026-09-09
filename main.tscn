@@ -5579,13 +5579,15 @@ environment = SubResource("Environment_pg1rn")
 [node name="StartXR" parent="." unique_id=1278618863 instance=ExtResource("1_ig7tw")]
 
 [node name="XROrigin3D" parent="." unique_id=31731761 instance=ExtResource("2_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.96178085, 0.63174736, 0)
+visible = false
 
 [node name="TargetSpawner" type="Node3D" parent="." unique_id=1593928303]
 script = ExtResource("5_lquwl")
 target_scene = ExtResource("6_7mycd")
 
 [node name="Player" parent="." unique_id=123003904 instance=ExtResource("2_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9389951, 1.5189, 1.1382495)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0383582, 1.7852018, 1.1382495)
 
 [node name="_Level" type="Node3D" parent="." unique_id=432602908]
 
