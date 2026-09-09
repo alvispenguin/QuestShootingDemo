@@ -5561,14 +5561,14 @@ environment = SubResource("Environment_pg1rn")
 [node name="StartXR" parent="." unique_id=1278618863 instance=ExtResource("1_ig7tw")]
 
 [node name="TargetSpawner" type="Node3D" parent="." unique_id=1593928303]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.80667, -3.9578354, 9.563104)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.99609, -4.981176, 8.983867)
 script = ExtResource("5_lquwl")
 target_scene = ExtResource("6_7mycd")
 spawn_area_size = Vector3(5, 5, 5)
-spawn_height = 5.0
+spawn_height = 3.0
 
 [node name="Player" parent="." unique_id=123003904 instance=ExtResource("2_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.614395, -3.7285433, 8.3945875)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.614395, -3.7285433, 8.910179)
 
 [node name="_Level" type="Node3D" parent="." unique_id=432602908]
 
