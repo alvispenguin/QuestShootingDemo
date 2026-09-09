@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgp7u"]
+
+[ext_resource type="PackedScene" uid="uid://bbmq" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Symbols/Word_Area.glb" id="1_bbmq"]
+[ext_resource type="Material" uid="uid://3ng" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Alpha_01_Norm.tres" id="2_3ng"]
+
+[node name="Word_Area" instance=ExtResource("1_bbmq")]
+
+[node name="Word_Area" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3ng")

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgo7g"]
+
+[ext_resource type="PackedScene" uid="uid://bam7" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Doors/Door_Vert_01.glb" id="1_bam7"]
+[ext_resource type="Material" uid="uid://30u" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Wall_11_Norm.tres" id="2_30u"]
+
+[sub_resource type="BoxShape3D" id="0_d4n4u"]
+size = Vector3( 0.944364, 5.126607, 3.363648)
+
+[node name="Door_Vert_01" instance=ExtResource("1_bam7")]
+
+[node name="Door_Vert_01" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_30u")
+
+[node name="StaticBody" type="StaticBody3D" parent="." ]
+
+[node name="BoxCollider_0" type="CollisionShape3D" parent="./StaticBody" ]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.375, -3.00268, 1.68182)
+shape = SubResource("0_d4n4u")
+debug_fill = false

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgqfk"]
+
+[ext_resource type="PackedScene" uid="uid://baug" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Walls/Wall_Table_01.glb" id="1_baug"]
+[ext_resource type="Material" uid="uid://3sa" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Stuff_03_Norm.tres" id="2_3sa"]
+
+[node name="Wall_Table_01" instance=ExtResource("1_baug")]
+
+[node name="Wall_Table_01" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3sa")

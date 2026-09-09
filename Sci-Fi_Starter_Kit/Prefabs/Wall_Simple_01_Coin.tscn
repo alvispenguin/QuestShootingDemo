@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgwcg"]
+
+[ext_resource type="PackedScene" uid="uid://bak5" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Walls/Wall_Simple_01_Coin.glb" id="1_bak5"]
+[ext_resource type="Material" uid="uid://34e" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Wall_02_Norm.tres" id="2_34e"]
+
+[node name="Wall_Simple_01_Coin" instance=ExtResource("1_bak5")]
+
+[node name="Wall_Simple_01_Coin" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_34e")

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itguh5"]
+
+[ext_resource type="PackedScene" uid="uid://bad7" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Stairways/Stairway_Step_01.glb" id="1_bad7"]
+[ext_resource type="Material" uid="uid://3uk" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Stuff_01_Norm.tres" id="2_3uk"]
+
+[node name="Stairway_Step_01" instance=ExtResource("1_bad7")]
+
+[node name="Stairway_Step_01" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3uk")

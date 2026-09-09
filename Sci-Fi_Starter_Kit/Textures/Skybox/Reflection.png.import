@@ -1,0 +1,30 @@
+[remap]
+
+importer="cubemap_texture"
+type="CompressedCubemap"
+uid="uid://31y"
+path.s3tc="res://.godot/imported/Reflection.png-57b9ae3e5db341a42e671a1b91f247e1.s3tc.ccube"
+path.etc2="res://.godot/imported/Reflection.png-57b9ae3e5db341a42e671a1b91f247e1.etc2.ccube"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+generator_parameters={}
+
+[deps]
+
+source_file="res://Sci-Fi_Starter_Kit/Textures/Skybox/Reflection.png"
+dest_files=["res://.godot/imported/Reflection.png-57b9ae3e5db341a42e671a1b91f247e1.s3tc.ccube", "res://.godot/imported/Reflection.png-57b9ae3e5db341a42e671a1b91f247e1.etc2.ccube"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+slices/arrangement=3

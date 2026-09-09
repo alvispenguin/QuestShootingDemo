@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgy0u"]
+
+[ext_resource type="PackedScene" uid="uid://85o" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Walls/Wall_Simple_05_Long.glb" id="1_85o"]
+[ext_resource type="Material" uid="uid://34e" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Wall_02_Norm.tres" id="2_34e"]
+[ext_resource type="Material" uid="uid://32s" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Wall_01_Norm.tres" id="3_32s"]
+[ext_resource type="Material" uid="uid://30u" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Wall_11_Norm.tres" id="4_30u"]
+
+[node name="Wall_Simple_05_Long" instance=ExtResource("1_85o")]
+
+[node name="Wall_Simple_05_Long" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_34e")
+surface_material_override/1 = ExtResource("3_32s")
+surface_material_override/2 = ExtResource("4_30u")

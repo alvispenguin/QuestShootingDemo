@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgraq"]
+
+[ext_resource type="PackedScene" uid="uid://bbhu" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Walls/Wall_Inclined_01_Half.glb" id="1_bbhu"]
+[ext_resource type="Material" uid="uid://3p7" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Wall_04_Norm.tres" id="2_3p7"]
+[ext_resource type="Material" uid="uid://3wa" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Wall_09_Norm.tres" id="3_3wa"]
+[ext_resource type="Material" uid="uid://3oe" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Wall_06_Norm.tres" id="4_3oe"]
+
+[node name="Wall_Inclined_01_Half" instance=ExtResource("1_bbhu")]
+
+[node name="Wall_Inclined_01_Half" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3p7")
+surface_material_override/1 = ExtResource("3_3wa")
+surface_material_override/2 = ExtResource("4_3oe")

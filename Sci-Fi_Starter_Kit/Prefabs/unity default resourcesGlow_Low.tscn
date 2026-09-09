@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itggjq"]
+
+[ext_resource type="PackedScene" uid="uid://c7t3nfckukhle" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Library/default resourcesGlow_Low.glb" id="1_va"]
+[ext_resource type="Material" uid="uid://3vi" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/Others/Glow_Low.tres" id="2_3vi"]
+
+[node name="unity default resourcesGlow_Low" instance=ExtResource("1_va")]
+
+[node name="Quad" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3vi")

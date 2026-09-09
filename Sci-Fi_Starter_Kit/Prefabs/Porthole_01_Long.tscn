@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgeue"]
+
+[ext_resource type="PackedScene" uid="uid://baxe" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Walls/Porthole_01_Long.glb" id="1_baxe"]
+[ext_resource type="Material" uid="uid://3tu" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Wall_12_Norm.tres" id="2_3tu"]
+
+[node name="Porthole_01_Long" instance=ExtResource("1_baxe")]
+
+[node name="Porthole_01_Long" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3tu")

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgtj1"]
+
+[ext_resource type="PackedScene" uid="uid://baty" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Walls/Wall_Simple_04_Long.glb" id="1_baty"]
+[ext_resource type="Material" uid="uid://33m" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/Others/Glass.tres" id="2_33m"]
+
+[node name="Wall_Simple_04_Long" instance=ExtResource("1_baty")]
+
+[node name="Glass" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_33m")

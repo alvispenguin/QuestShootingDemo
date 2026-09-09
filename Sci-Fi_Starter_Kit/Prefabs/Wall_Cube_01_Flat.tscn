@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgfru"]
+
+[ext_resource type="PackedScene" uid="uid://basm" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Walls/Wall_Cube_01_Flat.glb" id="1_basm"]
+[ext_resource type="Material" uid="uid://34e" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Wall_02_Norm.tres" id="2_34e"]
+
+[node name="Wall_Cube_01_Flat" instance=ExtResource("1_basm")]
+
+[node name="Wall_Cube_01_Flat" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_34e")

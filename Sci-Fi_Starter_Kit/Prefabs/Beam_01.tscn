@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d4n4ub6itglcy"]
+
+[ext_resource type="PackedScene" uid="uid://bbi7" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Stuff/Beam_01.glb" id="1_bbi7"]
+[ext_resource type="Material" uid="uid://3uk" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Stuff_01_Norm.tres" id="2_3uk"]
+
+[sub_resource type="BoxShape3D" id="0_d4n4u"]
+size = Vector3( 0.2500007, 0.41, 4.000003)
+
+[node name="Beam_01" instance=ExtResource("1_bbi7")]
+
+[node name="Beam_01" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3uk")
+
+[node name="StaticBody" type="StaticBody3D" parent="." ]
+
+[node name="BoxCollider_0" type="CollisionShape3D" parent="./StaticBody" ]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+shape = SubResource("0_d4n4u")
+debug_fill = false

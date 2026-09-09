@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://35e"]
+
+[ext_resource type="Texture2D" uid="uid://bcem" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Textures/Others/Sun.png" id="1_bcem"]
+
+[resource]
+resource_name = "Sun"
+albedo_color = Color(0.559, 0.559, 0.559, 0.502)
+transparency = 1
+cull_mode = 2
+blend_mode = 1 albedo_texture = ExtResource("1_bcem")

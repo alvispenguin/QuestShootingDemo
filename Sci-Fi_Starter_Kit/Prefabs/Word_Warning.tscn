@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgkhm"]
+
+[ext_resource type="PackedScene" uid="uid://86m" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Symbols/Word_Warning.glb" id="1_86m"]
+[ext_resource type="Material" uid="uid://303" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Alpha_01_Norm_Transp.tres" id="2_303"]
+
+[node name="Word_Warning" instance=ExtResource("1_86m")]
+
+[node name="Word_Warning" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_303")

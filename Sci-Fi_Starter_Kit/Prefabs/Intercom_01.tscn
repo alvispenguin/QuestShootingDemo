@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgo61"]
+
+[ext_resource type="PackedScene" uid="uid://bana" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Stuff/Intercom_01.glb" id="1_bana"]
+[ext_resource type="Material" uid="uid://3qs" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Stuff_04_Norm.tres" id="2_3qs"]
+
+[node name="Intercom_01" instance=ExtResource("1_bana")]
+
+[node name="Intercom_01" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3qs")

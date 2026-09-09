@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgfvc"]
+
+[ext_resource type="PackedScene" uid="uid://bbuu" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Stairways/Stairway_Plateform_03.glb" id="1_bbuu"]
+[ext_resource type="Material" uid="uid://3uk" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Stuff_01_Norm.tres" id="2_3uk"]
+[ext_resource type="Material" uid="uid://307" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Alpha_02_Norm.tres" id="3_307"]
+
+[node name="Stairway_Plateform_03" instance=ExtResource("1_bbuu")]
+
+[node name="Stairway_Plateform_03" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3uk")
+surface_material_override/1 = ExtResource("3_307")

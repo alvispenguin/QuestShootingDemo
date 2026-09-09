@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgk1g"]
+
+[ext_resource type="PackedScene" uid="uid://ba35" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Lights/Light_SideLight_01.glb" id="1_ba35"]
+[ext_resource type="Material" uid="uid://3uk" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Stuff_01_Norm.tres" id="2_3uk"]
+
+[node name="Light_SideLight_01" instance=ExtResource("1_ba35")]
+
+[node name="Light_SideLight_01" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3uk")

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgrki"]
+
+[ext_resource type="PackedScene" uid="uid://ba5o" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Walls/Wall_Inclined_01_Coin.glb" id="1_ba5o"]
+[ext_resource type="Material" uid="uid://3oe" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Wall_06_Norm.tres" id="2_3oe"]
+
+[node name="Wall_Inclined_01_Coin" instance=ExtResource("1_ba5o")]
+
+[node name="Wall_Inclined_01_Coin" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3oe")

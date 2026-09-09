@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://33e"]
+
+[ext_resource type="Texture2D" uid="uid://bceo" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Textures/Others/Glow.png" id="1_bceo"]
+
+[resource]
+resource_name = "Glow_Strong"
+albedo_color = Color(0.331, 0.331, 0.331, 0.918)
+transparency = 1
+cull_mode = 2
+blend_mode = 1 albedo_texture = ExtResource("1_bceo")

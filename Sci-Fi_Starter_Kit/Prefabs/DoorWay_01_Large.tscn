@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgeca"]
+
+[ext_resource type="PackedScene" uid="uid://bbae" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Doors/DoorWay_01_Large.glb" id="1_bbae"]
+[ext_resource type="Material" uid="uid://3xc" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Wall_05_Norm.tres" id="2_3xc"]
+
+[node name="DoorWay_01_Large" instance=ExtResource("1_bbae")]
+
+[node name="DoorWay_01_Large" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3xc")

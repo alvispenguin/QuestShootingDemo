@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgqeg"]
+
+[ext_resource type="PackedScene" uid="uid://bame" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Walls/Wall_Inclined_02_CoinLeft.glb" id="1_bame"]
+[ext_resource type="Material" uid="uid://33m" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/Others/Glass.tres" id="2_33m"]
+
+[node name="Wall_Inclined_02_CoinLeft" instance=ExtResource("1_bame")]
+
+[node name="Glass" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_33m")

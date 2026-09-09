@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itglsi"]
+
+[ext_resource type="PackedScene" uid="uid://86a" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Walls/Column_01_Big.glb" id="1_86a"]
+[ext_resource type="Material" uid="uid://335" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Wall_03_Norm.tres" id="2_335"]
+
+[node name="Column_01_Big" instance=ExtResource("1_86a")]
+
+[node name="Column_01_Big" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_335")

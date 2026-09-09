@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgjs3"]
+
+[ext_resource type="PackedScene" uid="uid://q2ttejsoub7r" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Symbols/Num_2HD_Alpha_01_Norm_Transp.glb" id="1_bany"]
+[ext_resource type="Material" uid="uid://303" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Alpha_01_Norm_Transp.tres" id="2_303"]
+
+[node name="Num_2HD_Alpha_01_Norm_Transp" instance=ExtResource("1_bany")]
+
+[node name="Num_2" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_303")

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgry1"]
+
+[ext_resource type="PackedScene" uid="uid://baaw" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Roofs/Roof_Glass_01_6x6.glb" id="1_baaw"]
+[ext_resource type="Material" uid="uid://3tu" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Wall_12_Norm.tres" id="2_3tu"]
+
+[node name="Roof_Glass_01_6x6" instance=ExtResource("1_baaw")]
+
+[node name="Roof_Glass_01_6x6" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3tu")

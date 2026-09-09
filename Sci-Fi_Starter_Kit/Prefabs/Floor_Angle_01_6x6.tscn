@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgu8i"]
+
+[ext_resource type="PackedScene" uid="uid://baq7" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Floors/Floor_Angle_01_6x6.glb" id="1_baq7"]
+[ext_resource type="Material" uid="uid://34a" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Floor_01_Norm.tres" id="2_34a"]
+
+[sub_resource type="BoxShape3D" id="0_d4n4u"]
+size = Vector3( 6, 6.000001, 0)
+
+[node name="Floor_Angle_01_6x6" instance=ExtResource("1_baq7")]
+
+[node name="Floor_01_6x6" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_34a")
+
+[node name="StaticBody" type="StaticBody3D" parent="." ]
+
+[node name="BoxCollider_0" type="CollisionShape3D" parent="./StaticBody" ]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -3, 0)
+shape = SubResource("0_d4n4u")
+debug_fill = false

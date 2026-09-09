@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgt5k"]
+
+[ext_resource type="PackedScene" uid="uid://ba0s" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Symbols/Sign_Danger_01.glb" id="1_ba0s"]
+[ext_resource type="Material" uid="uid://3ng" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Alpha_01_Norm.tres" id="2_3ng"]
+
+[node name="Sign_Danger_01" instance=ExtResource("1_ba0s")]
+
+[node name="Sign_Danger_01" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3ng")

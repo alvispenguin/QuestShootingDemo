@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgpry"]
+
+[ext_resource type="PackedScene" uid="uid://c0sb0jpowru83" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Props/Crate_01HD_Stuff_02_Norm.glb" id="1_87u"]
+[ext_resource type="Material" uid="uid://331" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Stuff_02_Norm.tres" id="2_331"]
+
+[node name="Crate_01HD_Stuff_02_Norm" instance=ExtResource("1_87u")]
+
+[node name="Crate_Top" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_331")

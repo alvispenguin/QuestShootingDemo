@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgeoa"]
+
+[ext_resource type="PackedScene" uid="uid://bjkbrvhmfmvs5" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Props/Airing_01HD_Stuff_01_Norm.glb" id="1_88o"]
+[ext_resource type="Material" uid="uid://3uk" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Stuff_01_Norm.tres" id="2_3uk"]
+
+[node name="Airing_01HD_Stuff_01_Norm" instance=ExtResource("1_88o")]
+
+[node name="Propeller" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3uk")

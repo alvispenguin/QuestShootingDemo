@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgt2y"]
+
+[ext_resource type="PackedScene" uid="uid://bblm" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Walls/Wall_Console_01_Half.glb" id="1_bblm"]
+[ext_resource type="Material" uid="uid://347" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HUD_Screen_02.tres" id="2_347"]
+
+[node name="Wall_Console_01_Half" instance=ExtResource("1_bblm")]
+
+[node name="Screen_A" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_347")

@@ -1,0 +1,27 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://34e"]
+
+[ext_resource type="Texture2D" uid="uid://bccs" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Textures/HD_Wall_02_Dif_Style_02_Alb.png" id="1_bccs"]
+[ext_resource type="Texture2D" uid="uid://bccm" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Textures/HD_Wall_02_Dif_Style_02_Norm.png" id="2_bccm"]
+[ext_resource type="Texture2D" uid="uid://bccu" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Textures/HD_Wall_02_Dif_Style_02_Metal.png" id="3_bccu"]
+[ext_resource type="Texture2D" uid="uid://bccw" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Textures/HD_Wall_02_Dif_Style_02_AO.png" id="4_bccw"]
+[ext_resource type="Texture2D" uid="uid://bcco" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Textures/HD_Wall_02_Dif_Style_02_Illum.png" id="5_bcco"]
+
+[resource]
+resource_name = "HD_Wall_02_Norm"
+albedo_color = Color(0.860, 0.860, 0.860, 1.000)
+cull_mode = 2
+blend_mode = 0 albedo_texture = ExtResource("1_bccs")
+normal_enabled = true
+normal_texture = ExtResource("2_bccm")
+metallic = 1.0
+metallic_texture = ExtResource("3_bccu")
+metallic_texture_channel = 0
+roughness = 1.0
+roughness_texture = ExtResource("3_bccu")
+roughness_texture_channel = 3
+ao_enabled = true
+ao_texture = ExtResource("4_bccw")
+ao_texture_channel = 1
+emission_enabled = true
+emission_intensity = 200000
+emission_texture = ExtResource("5_bcco")

@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://33m"]
+
+[ext_resource type="Texture2D" uid="uid://bcgs" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Textures/Others/Glass_01.png" id="1_bcgs"]
+[ext_resource type="CompressedCubemap" uid="uid://31y" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Textures/Skybox/Reflection.png" id="2_31y"]
+
+[resource]
+resource_name = "Glass"
+albedo_color = Color(1.000, 1.000, 1.000, 0.184)
+transparency = 1
+cull_mode = 2
+blend_mode = 0 albedo_texture = ExtResource("1_bcgs")
+emission_enabled = true
+emission = Color(0.000, 0.000, 0.000, 0.000)

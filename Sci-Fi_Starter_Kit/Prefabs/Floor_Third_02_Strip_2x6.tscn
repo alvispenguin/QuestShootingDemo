@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgjss"]
+
+[ext_resource type="PackedScene" uid="uid://balc" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Floors/Floor_Third_02_Strip_2x6.glb" id="1_balc"]
+[ext_resource type="Material" uid="uid://3re" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Floor_02_Norm.tres" id="2_3re"]
+
+[node name="Floor_Third_02_Strip_2x6" instance=ExtResource("1_balc")]
+
+[node name="Floor_Third_02_Strip_2x6" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3re")

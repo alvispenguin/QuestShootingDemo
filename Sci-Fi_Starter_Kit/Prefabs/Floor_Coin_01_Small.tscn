@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgvvi"]
+
+[ext_resource type="PackedScene" uid="uid://baoq" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Floors/Floor_Coin_01_Small.glb" id="1_baoq"]
+[ext_resource type="Material" uid="uid://3re" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Floor_02_Norm.tres" id="2_3re"]
+
+[sub_resource type="BoxShape3D" id="0_d4n4u"]
+size = Vector3( 2, 2, 4.263256E-14)
+
+[node name="Floor_Coin_01_Small" instance=ExtResource("1_baoq")]
+
+[node name="Floor_Coin_01_Small" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3re")
+
+[node name="StaticBody" type="StaticBody3D" parent="." ]
+
+[node name="BoxCollider_0" type="CollisionShape3D" parent="./StaticBody" ]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 0)
+shape = SubResource("0_d4n4u")
+debug_fill = false

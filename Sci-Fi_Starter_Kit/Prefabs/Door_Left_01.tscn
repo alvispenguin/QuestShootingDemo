@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itg3ns"]
+
+[ext_resource type="PackedScene" uid="uid://865" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Doors/Door_Left_01.glb" id="1_865"]
+[ext_resource type="Material" uid="uid://3oe" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Wall_06_Norm.tres" id="2_3oe"]
+
+[node name="Door_Left_01" instance=ExtResource("1_865")]
+
+[node name="Door_Left_01" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3oe")

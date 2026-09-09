@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgn7i"]
+
+[ext_resource type="PackedScene" uid="uid://cgiff817sgion" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Walls/Wall_Gear_01_HalfHD_Stuff_03_NormHD_Stuff_03_Norm.glb" id="1_bans"]
+[ext_resource type="Material" uid="uid://3sa" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Stuff_03_Norm.tres" id="2_3sa"]
+
+[node name="Wall_Gear_01_HalfHD_Stuff_03_NormHD_Stuff_03_Norm" instance=ExtResource("1_bans")]
+
+[node name="Door_Right" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3sa")

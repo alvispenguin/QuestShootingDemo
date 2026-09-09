@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgw6m"]
+
+[ext_resource type="PackedScene" uid="uid://bbem" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Walls/Wall_Simple_01_TurnShort_90.glb" id="1_bbem"]
+[ext_resource type="Material" uid="uid://34e" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Wall_02_Norm.tres" id="2_34e"]
+[ext_resource type="Material" uid="uid://32s" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Wall_01_Norm.tres" id="3_32s"]
+
+[node name="Wall_Simple_01_TurnShort_90" instance=ExtResource("1_bbem")]
+
+[node name="Wall_Simple_01_TurnShort_90" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_34e")
+surface_material_override/1 = ExtResource("3_32s")

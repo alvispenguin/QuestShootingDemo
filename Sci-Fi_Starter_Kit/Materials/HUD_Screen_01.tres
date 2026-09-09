@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://3yc"]
+
+[ext_resource type="Texture2D" uid="uid://bcci" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Textures/Others/HUD_Screen_01.png" id="1_bcci"]
+
+[resource]
+resource_name = "HUD_Screen_01"
+albedo_color = Color(1.000, 1.000, 1.000, 1.000)
+blend_mode = 0 albedo_texture = ExtResource("1_bcci")

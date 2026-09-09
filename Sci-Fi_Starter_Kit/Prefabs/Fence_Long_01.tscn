@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d4n4ub6itghki"]
+
+[ext_resource type="PackedScene" uid="uid://851" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Fences/Fence_Long_01.glb" id="1_851"]
+[ext_resource type="Material" uid="uid://3uk" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Stuff_01_Norm.tres" id="2_3uk"]
+
+[sub_resource type="BoxShape3D" id="0_d4n4u"]
+size = Vector3( 0.2500005, 5.000001, 1.304114)
+
+[node name="Fence_Long_01" instance=ExtResource("1_851")]
+
+[node name="Fence_Long_01" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3uk")
+
+[node name="StaticBody" type="StaticBody3D" parent="." ]
+
+[node name="BoxCollider_0" type="CollisionShape3D" parent="./StaticBody" ]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0.65206)
+shape = SubResource("0_d4n4u")
+debug_fill = false

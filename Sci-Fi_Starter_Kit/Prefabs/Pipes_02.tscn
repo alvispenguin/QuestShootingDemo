@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itglr7"]
+
+[ext_resource type="PackedScene" uid="uid://bbje" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Stuff/Pipes_02.glb" id="1_bbje"]
+[ext_resource type="Material" uid="uid://3uk" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Stuff_01_Norm.tres" id="2_3uk"]
+
+[node name="Pipes_02" instance=ExtResource("1_bbje")]
+
+[node name="Pipes_02" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3uk")

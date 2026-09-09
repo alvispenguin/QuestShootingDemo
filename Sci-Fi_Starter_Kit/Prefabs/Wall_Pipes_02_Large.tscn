@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgqiw"]
+
+[ext_resource type="PackedScene" uid="uid://ba0q" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Walls/Wall_Pipes_02_Large.glb" id="1_ba0q"]
+[ext_resource type="Material" uid="uid://3uk" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Stuff_01_Norm.tres" id="2_3uk"]
+
+[node name="Wall_Pipes_02_Large" instance=ExtResource("1_ba0q")]
+
+[node name="Wall_Pipes_02_Large" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3uk")

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgn8c"]
+
+[ext_resource type="PackedScene" uid="uid://bano" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Walls/Wall_Gear_01_Half.glb" id="1_bano"]
+[ext_resource type="Material" uid="uid://3sa" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Stuff_03_Norm.tres" id="2_3sa"]
+
+[node name="Wall_Gear_01_Half" instance=ExtResource("1_bano")]
+
+[node name="Wall_Gear_01_Half" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3sa")

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgpwy"]
+
+[ext_resource type="PackedScene" uid="uid://bbmw" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Stairways/Stairway_PillarAngle_01.glb" id="1_bbmw"]
+[ext_resource type="Material" uid="uid://3uk" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Stuff_01_Norm.tres" id="2_3uk"]
+
+[node name="Stairway_PillarAngle_01" instance=ExtResource("1_bbmw")]
+
+[node name="Stairway_PillarAngle_01" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3uk")

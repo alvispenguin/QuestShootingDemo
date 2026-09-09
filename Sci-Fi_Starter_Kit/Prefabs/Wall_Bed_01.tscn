@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgd6o"]
+
+[ext_resource type="PackedScene" uid="uid://bbku" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Walls/Wall_Bed_01.glb" id="1_bbku"]
+[ext_resource type="Material" uid="uid://3sa" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Stuff_03_Norm.tres" id="2_3sa"]
+
+[node name="Wall_Bed_01" instance=ExtResource("1_bbku")]
+
+[node name="Wall_Bed_01" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3sa")

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgvvy"]
+
+[ext_resource type="PackedScene" uid="uid://bhgiy17sasglb" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Doors/Door_Right_01Glass.glb" id="1_bbhi"]
+[ext_resource type="Material" uid="uid://33m" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/Others/Glass.tres" id="2_33m"]
+
+[node name="Door_Right_01Glass" instance=ExtResource("1_bbhi")]
+
+[node name="Glass" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_33m")

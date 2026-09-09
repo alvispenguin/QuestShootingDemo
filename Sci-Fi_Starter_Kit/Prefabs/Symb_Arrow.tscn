@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgxwu"]
+
+[ext_resource type="PackedScene" uid="uid://ba5u" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Symbols/Symb_Arrow.glb" id="1_ba5u"]
+[ext_resource type="Material" uid="uid://3ng" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Alpha_01_Norm.tres" id="2_3ng"]
+
+[node name="Symb_Arrow" instance=ExtResource("1_ba5u")]
+
+[node name="Symb_Arrow" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3ng")

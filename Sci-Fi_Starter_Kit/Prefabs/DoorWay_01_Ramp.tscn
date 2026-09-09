@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgyaa"]
+
+[ext_resource type="PackedScene" uid="uid://bap5" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Doors/DoorWay_01_Ramp.glb" id="1_bap5"]
+[ext_resource type="Material" uid="uid://3xc" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Wall_05_Norm.tres" id="2_3xc"]
+
+[node name="DoorWay_01_Ramp" instance=ExtResource("1_bap5")]
+
+[node name="DoorWay_01_Ramp" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3xc")

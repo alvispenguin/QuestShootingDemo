@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgtbm"]
+
+[ext_resource type="PackedScene" uid="uid://baow" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Floors/Floor_Third_01_Strip_2x6.glb" id="1_baow"]
+[ext_resource type="Material" uid="uid://3re" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Floor_02_Norm.tres" id="2_3re"]
+
+[sub_resource type="ConcavePolygonShape3D" id="0_d4n4u"]
+data = PackedVector3Array(3.974669, -6, 0, 0, -6, 0, 3.974669, -3, 0, 0, -3, 0, 3.974669, -3, 0, 0, -6, 0, 3.974669, -3, 0, 0, -3, 0, 3.974669, 0, 0, 0, 0, 0, 3.974669, 0, 0, 0, -3, 0)
+
+[node name="Floor_Third_01_Strip_2x6" instance=ExtResource("1_baow")]
+
+[node name="Floor_Third_01_Strip_2x6" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3re")
+
+[node name="StaticBody" type="StaticBody3D" parent="." ]
+
+[node name="MeshCollider_0" type="CollisionShape3D" parent="./StaticBody" ]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("0_d4n4u")
+debug_fill = false

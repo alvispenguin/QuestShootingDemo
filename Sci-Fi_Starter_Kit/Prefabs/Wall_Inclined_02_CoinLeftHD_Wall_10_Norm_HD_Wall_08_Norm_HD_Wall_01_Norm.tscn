@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgqd7"]
+
+[ext_resource type="PackedScene" uid="uid://b2efj2ehdaulh" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Walls/Wall_Inclined_02_CoinLeftHD_Wall_10_Norm_HD_Wall_08_Norm_HD_Wall_01_Norm.glb" id="1_bamg"]
+[ext_resource type="Material" uid="uid://3s1" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Wall_10_Norm.tres" id="2_3s1"]
+[ext_resource type="Material" uid="uid://3s5" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Wall_08_Norm.tres" id="3_3s5"]
+[ext_resource type="Material" uid="uid://32s" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Wall_01_Norm.tres" id="4_32s"]
+
+[node name="Wall_Inclined_02_CoinLeftHD_Wall_10_Norm_HD_Wall_08_Norm_HD_Wall_01_Norm" instance=ExtResource("1_bamg")]
+
+[node name="Wall_Inclined_02_CoinLeft" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3s1")
+surface_material_override/1 = ExtResource("3_3s5")
+surface_material_override/2 = ExtResource("4_32s")

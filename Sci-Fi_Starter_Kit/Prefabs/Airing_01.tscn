@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgeoi"]
+
+[ext_resource type="PackedScene" uid="uid://88m" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Props/Airing_01.glb" id="1_88m"]
+[ext_resource type="Material" uid="uid://3uk" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Stuff_01_Norm.tres" id="2_3uk"]
+[ext_resource type="Material" uid="uid://307" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Alpha_02_Norm.tres" id="3_307"]
+
+[node name="Airing_01" instance=ExtResource("1_88m")]
+
+[node name="Airing_01" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3uk")
+surface_material_override/1 = ExtResource("3_307")

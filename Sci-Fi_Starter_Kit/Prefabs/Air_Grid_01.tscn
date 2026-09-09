@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4n4ub6itgp43"]
+
+[ext_resource type="PackedScene" uid="uid://baek" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Stuff/Air_Grid_01.glb" id="1_baek"]
+[ext_resource type="Material" uid="uid://3uk" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Stuff_01_Norm.tres" id="2_3uk"]
+
+[node name="Air_Grid_01" instance=ExtResource("1_baek")]
+
+[node name="Air_Grid_01" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3uk")

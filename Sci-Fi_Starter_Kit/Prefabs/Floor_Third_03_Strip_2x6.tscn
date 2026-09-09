@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d4n4ub6itg1vm"]
+
+[ext_resource type="PackedScene" uid="uid://baoi" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Meshes/Floors/Floor_Third_03_Strip_2x6.glb" id="1_baoi"]
+[ext_resource type="Material" uid="uid://3re" path="res://Creepy_Cat/Sci-Fi_Starter_Kit/Materials/HD_Floor_02_Norm.tres" id="2_3re"]
+
+[sub_resource type="BoxShape3D" id="0_d4n4u"]
+size = Vector3( 3.974671, 6, 1.430512E-06)
+
+[node name="Floor_Third_03_Strip_2x6" instance=ExtResource("1_baoi")]
+
+[node name="Floor_Third_03_Strip_2x6" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3re")
+
+[node name="StaticBody" type="StaticBody3D" parent="." ]
+
+[node name="BoxCollider_0" type="CollisionShape3D" parent="./StaticBody" ]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.98734, -3, 0)
+shape = SubResource("0_d4n4u")
+debug_fill = false
