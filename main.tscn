@@ -5561,7 +5561,7 @@ environment = SubResource("Environment_pg1rn")
 [node name="StartXR" parent="." unique_id=1278618863 instance=ExtResource("1_ig7tw")]
 
 [node name="TargetSpawner" type="Node3D" parent="." unique_id=1593928303]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.732666, -4.981176, 8.983867)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.732666, -2.7408338, 8.983867)
 script = ExtResource("5_lquwl")
 target_scene = ExtResource("6_7mycd")
 spawn_area_size = Vector3(5, 5, 5)
@@ -5569,6 +5569,52 @@ spawn_height = 3.0
 
 [node name="Player" parent="." unique_id=123003904 instance=ExtResource("2_h2yge")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -64.0443, -3.7285433, 8.895902)
+
+[node name="Post" type="Node3D" parent="." unique_id=942541809]
+
+[node name="Post1" type="CSGBox3D" parent="Post" unique_id=95687448]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.37683, -2.018817, 9.357781)
+size = Vector3(1, 6, 3)
+
+[node name="Post2" type="CSGBox3D" parent="Post" unique_id=1078442434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.89341, -0.9948065, 2.230361)
+size = Vector3(1, 8, 1)
+
+[node name="Post3" type="CSGBox3D" parent="Post" unique_id=1512740185]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.532383, -2.532001, 3.9845085)
+size = Vector3(2, 5, 1)
+
+[node name="Post4" type="CSGBox3D" parent="Post" unique_id=1383147524]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.806732, -0.9948065, 8.210221)
+size = Vector3(1, 8, 1)
+
+[node name="Post5" type="CSGBox3D" parent="Post" unique_id=1251808029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.70296, -0.9948065, 14.713924)
+size = Vector3(1, 8, 1)
+
+[node name="Post6" type="CSGBox3D" parent="Post" unique_id=1695310012]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.236217, -2.9279513, 16.563969)
+size = Vector3(1, 4, 1)
+
+[node name="Post7" type="CSGBox3D" parent="Post" unique_id=1479542305]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.486, -2.176, 9.008)
+size = Vector3(1, 8, 1)
+
+[node name="Post8" type="CSGBox3D" parent="Post" unique_id=810642635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.079384, -3.418492, 6.0940323)
+size = Vector3(1, 3, 1)
+
+[node name="Post9" type="CSGBox3D" parent="Post" unique_id=1017058793]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.43953, -2.1763906, 14.812438)
+size = Vector3(1, 8, 1)
+
+[node name="Post10" type="CSGBox3D" parent="Post" unique_id=1299617192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.43953, -2.1763906, 2.8394756)
+size = Vector3(1, 8, 1)
+
+[node name="Post11" type="CSGBox3D" parent="Post" unique_id=1542385500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.87822, -2.914398, 12.327905)
+size = Vector3(1, 6, 2)
 
 [node name="_Level" type="Node3D" parent="." unique_id=432602908]
 
@@ -34360,49 +34406,3 @@ debug_fill = false
 
 [node name="Wall_Cube_01_Round" parent="_Cache_Misere/Wall_Cube_01_Round_5071" unique_id=1268991521 instance=ExtResource("122_a1n43")]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-
-[node name="Post" type="Node3D" parent="." unique_id=942541809]
-
-[node name="Post1" type="CSGBox3D" parent="Post" unique_id=95687448]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.37683, -2.018817, 9.357781)
-size = Vector3(1, 6, 3)
-
-[node name="Post2" type="CSGBox3D" parent="Post" unique_id=1078442434]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.89341, -0.9948065, 2.230361)
-size = Vector3(1, 8, 1)
-
-[node name="Post3" type="CSGBox3D" parent="Post" unique_id=1512740185]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.532383, -2.532001, 3.9845085)
-size = Vector3(2, 5, 1)
-
-[node name="Post4" type="CSGBox3D" parent="Post" unique_id=1383147524]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.806732, -0.9948065, 8.210221)
-size = Vector3(1, 8, 1)
-
-[node name="Post5" type="CSGBox3D" parent="Post" unique_id=1251808029]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.70296, -0.9948065, 14.713924)
-size = Vector3(1, 8, 1)
-
-[node name="Post6" type="CSGBox3D" parent="Post" unique_id=1695310012]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.236217, -2.9279513, 16.563969)
-size = Vector3(1, 4, 1)
-
-[node name="Post7" type="CSGBox3D" parent="Post" unique_id=1479542305]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.486, -2.176, 9.008)
-size = Vector3(1, 8, 1)
-
-[node name="Post8" type="CSGBox3D" parent="Post" unique_id=810642635]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.079384, -3.418492, 6.0940323)
-size = Vector3(1, 3, 1)
-
-[node name="Post9" type="CSGBox3D" parent="Post" unique_id=1017058793]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.43953, -2.1763906, 14.812438)
-size = Vector3(1, 8, 1)
-
-[node name="Post10" type="CSGBox3D" parent="Post" unique_id=1299617192]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.43953, -2.1763906, 2.8394756)
-size = Vector3(1, 8, 1)
-
-[node name="Post11" type="CSGBox3D" parent="Post" unique_id=1542385500]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.87822, -2.914398, 12.327905)
-size = Vector3(1, 6, 2)
