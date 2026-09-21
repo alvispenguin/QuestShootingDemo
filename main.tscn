@@ -34365,7 +34365,7 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 
 [node name="Post1" type="CSGBox3D" parent="Post" unique_id=95687448]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.37683, -2.018817, 9.357781)
-size = Vector3(1, 6, 1)
+size = Vector3(1, 6, 3)
 
 [node name="Post2" type="CSGBox3D" parent="Post" unique_id=1078442434]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.89341, -0.9948065, 2.230361)
@@ -34373,7 +34373,7 @@ size = Vector3(1, 8, 1)
 
 [node name="Post3" type="CSGBox3D" parent="Post" unique_id=1512740185]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.532383, -2.532001, 3.9845085)
-size = Vector3(1, 5, 1)
+size = Vector3(2, 5, 1)
 
 [node name="Post4" type="CSGBox3D" parent="Post" unique_id=1383147524]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.806732, -0.9948065, 8.210221)
@@ -34405,4 +34405,4 @@ size = Vector3(1, 8, 1)
 
 [node name="Post11" type="CSGBox3D" parent="Post" unique_id=1542385500]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.87822, -2.914398, 12.327905)
-size = Vector3(1, 6, 1)
+size = Vector3(1, 6, 2)
