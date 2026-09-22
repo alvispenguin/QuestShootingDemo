@@ -11113,9 +11113,6 @@ light_color = Color(0.03448272, 1, 0, 1)
 light_energy = 16.0
 omni_range = 1.5
 
-[node name="Light_SideLight_05" parent="_Level/Prefab_Control_Room/Stairway_Angle_Right_01/Light_SideLight_05" unique_id=363373989 instance=ExtResource("22_bnk2o")]
-transform = Transform3D(0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0)
-
 [node name="Light_SideLight_05_918" type="Node3D" parent="_Level/Prefab_Control_Room/Stairway_Angle_Right_01" unique_id=441136303]
 transform = Transform3D(0.5, 0, 0, 0, 0, -0.5, 0, 0.5, 0, 4, 0.08, 0.13)
 
@@ -11124,9 +11121,6 @@ transform = Transform3D(-1.75669, 0, 0, 0, 1.75669, 0, 0, 0, -1.75669, -0.003, 0
 light_color = Color(0.03448272, 1, 0, 1)
 light_energy = 16.0
 omni_range = 1.5
-
-[node name="Light_SideLight_05" parent="_Level/Prefab_Control_Room/Stairway_Angle_Right_01/Light_SideLight_05_918" unique_id=569900461 instance=ExtResource("22_bnk2o")]
-transform = Transform3D(0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0)
 
 [node name="Light_SideLight_05_921" type="Node3D" parent="_Level/Prefab_Control_Room/Stairway_Angle_Right_01" unique_id=1293308341]
 transform = Transform3D(0.5, 0, 0, 0, 0, -0.5, 0, 0.5, 0, 0.124, 0.079, 4.011)
@@ -11137,9 +11131,6 @@ light_color = Color(0.03448272, 1, 0, 1)
 light_energy = 16.0
 omni_range = 1.5
 
-[node name="Light_SideLight_05" parent="_Level/Prefab_Control_Room/Stairway_Angle_Right_01/Light_SideLight_05_921" unique_id=1338307581 instance=ExtResource("22_bnk2o")]
-transform = Transform3D(0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0)
-
 [node name="Light_SideLight_05_924" type="Node3D" parent="_Level/Prefab_Control_Room/Stairway_Angle_Right_01" unique_id=765221406]
 transform = Transform3D(0.5, 0, 0, 0, 0, -0.5, 0, 0.5, 0, 0.124, 0.079, 2.019)
 
@@ -11148,9 +11139,6 @@ transform = Transform3D(-1.75669, 0, 0, 0, 1.75669, 0, 0, 0, -1.75669, -0.003, 0
 light_color = Color(0.03448272, 1, 0, 1)
 light_energy = 16.0
 omni_range = 1.5
-
-[node name="Light_SideLight_05" parent="_Level/Prefab_Control_Room/Stairway_Angle_Right_01/Light_SideLight_05_924" unique_id=1355746394 instance=ExtResource("22_bnk2o")]
-transform = Transform3D(0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0)
 
 [node name="Stairway_Slope_45_01" type="Node3D" parent="_Level/Prefab_Control_Room" unique_id=811421114]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 8, -1, -6)
@@ -11187,9 +11175,6 @@ transform = Transform3D(-1.75669, 0, 0, 0, 1.75669, 0, 0, 0, -1.75669, -0.003, 0
 light_color = Color(0.03448272, 1, 0, 1)
 light_energy = 16.0
 omni_range = 1.5
-
-[node name="Light_SideLight_05" parent="_Level/Prefab_Control_Room/Stairway_Slope_45_01/Light_SideLight_05_935" unique_id=830056562 instance=ExtResource("22_bnk2o")]
-transform = Transform3D(0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0)
 
 [node name="Light_SideLight_05_938" type="Node3D" parent="_Level/Prefab_Control_Room/Stairway_Slope_45_01" unique_id=1477829631]
 transform = Transform3D(0, -0.5, 0, -0.27525, 0, -0.41742, 0.41742, 0, -0.27525, 0.13, -2.539, 3.986)
@@ -11259,9 +11244,6 @@ transform = Transform3D(-1.75669, 0, 0, 0, 1.75669, 0, 0, 0, -1.75669, -0.003, 0
 light_color = Color(0.03448272, 1, 0, 1)
 light_energy = 16.0
 omni_range = 1.5
-
-[node name="Light_SideLight_05" parent="_Level/Prefab_Control_Room/Stairway_Plateform_01/Light_SideLight_05_952" unique_id=37951989 instance=ExtResource("22_bnk2o")]
-transform = Transform3D(0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0)
 
 [node name="Light_SideLight_05_955" type="Node3D" parent="_Level/Prefab_Control_Room/Stairway_Plateform_01" unique_id=2101095751]
 transform = Transform3D(0.5, 0, 0, 0, 0.00017, -0.5, 0, 0.5, 0.00017, 5.874, 0.079, 4.011)
@@ -33420,9 +33402,6 @@ light_color = Color(0.03448272, 1, 0, 1)
 light_energy = 16.0
 omni_range = 0.5038728
 
-[node name="Light_SideLight_05" parent="_Props/Crate_01_4863/Light_SideLight_05_4869" unique_id=682665402 instance=ExtResource("22_bnk2o")]
-transform = Transform3D(0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0)
-
 [node name="Crate_01_4872" type="Node3D" parent="_Props" unique_id=492062333]
 transform = Transform3D(-0.0037, 0, 0.99999, 0, 1, 0, -0.99999, 0, -0.0037, -62.881, -4.993, 9.007)
 
@@ -33456,9 +33435,6 @@ light_color = Color(0.03448272, 1, 0, 1)
 light_energy = 16.0
 omni_range = 0.5038728
 
-[node name="Light_SideLight_05" parent="_Props/Crate_01_4881/Light_SideLight_05" unique_id=1875417787 instance=ExtResource("22_bnk2o")]
-transform = Transform3D(0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0)
-
 [node name="Light_SideLight_05_4887" type="Node3D" parent="_Props/Crate_01_4881" unique_id=1817984984]
 transform = Transform3D(0.37188, 0, 0, 0, 0.37188, 0, 0, 0, 0.14514, -0.212, 0.119, -0.9989)
 
@@ -33467,9 +33443,6 @@ transform = Transform3D(-1.75669, 0, 0, 0, 1.75669, 0, 0, 0, -1.75669, -0.003, 0
 light_color = Color(0.03448272, 1, 0, 1)
 light_energy = 16.0
 omni_range = 0.5038728
-
-[node name="Light_SideLight_05" parent="_Props/Crate_01_4881/Light_SideLight_05_4887" unique_id=41432044 instance=ExtResource("22_bnk2o")]
-transform = Transform3D(0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0)
 
 [node name="Crate_01_4890" type="Node3D" parent="_Props" unique_id=606081405]
 transform = Transform3D(-0.35379, 0, 0.93532, 0, 1, 0, -0.93532, 0, -0.35379, -62.877, -4.241, 9.542)
@@ -33483,9 +33456,6 @@ light_color = Color(0.03448272, 1, 0, 1)
 light_energy = 16.0
 omni_range = 0.5038728
 
-[node name="Light_SideLight_05" parent="_Props/Crate_01_4890/Light_SideLight_05" unique_id=71188548 instance=ExtResource("22_bnk2o")]
-transform = Transform3D(0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0)
-
 [node name="Light_SideLight_05_4896" type="Node3D" parent="_Props/Crate_01_4890" unique_id=1389253847]
 transform = Transform3D(0.37188, 0, 0, 0, 0.37188, 0, 0, 0, 0.14514, -0.212, 0.119, -0.9989)
 
@@ -33494,9 +33464,6 @@ transform = Transform3D(-1.75669, 0, 0, 0, 1.75669, 0, 0, 0, -1.75669, -0.003, 0
 light_color = Color(0.03448272, 1, 0, 1)
 light_energy = 16.0
 omni_range = 0.5038728
-
-[node name="Light_SideLight_05" parent="_Props/Crate_01_4890/Light_SideLight_05_4896" unique_id=579357686 instance=ExtResource("22_bnk2o")]
-transform = Transform3D(0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0)
 
 [node name="Crate_01_4899" type="Node3D" parent="_Props" unique_id=1027307107]
 transform = Transform3D(-0.69387, 0, -0.7201, 0, 1, 0, 0.7201, 0, -0.69387, -44.735, 0.749, 20.564)
