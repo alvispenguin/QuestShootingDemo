@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="2_i3pqv"]
 [ext_resource type="Script" uid="uid://buagi0q1adb82" path="res://right_hand_controller.gd" id="4_sweqy"]
 [ext_resource type="Script" uid="uid://d37nrbofqqx0h" path="res://scripts/setup_passthrough_sim.gd" id="7_1jxqw"]
+[ext_resource type="Script" uid="uid://dns1gu38sb65k" path="res://scripts/passthrough_control_panel.gd" id="8_dw050"]
 
 [node name="XROrigin3D" type="XROrigin3D" unique_id=31731761]
 
@@ -34,3 +35,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10430491, 0, 0)
 
 [node name="Quest3PassthroughSim" type="Node" parent="." unique_id=381340912]
 script = ExtResource("7_1jxqw")
+
+[node name="PassthroughControls" type="CanvasLayer" parent="." unique_id=1620089703]
+script = ExtResource("8_dw050")
