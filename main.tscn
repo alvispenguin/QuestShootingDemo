@@ -111,6 +111,7 @@
 [ext_resource type="PackedScene" uid="uid://d4n4ub6itgeoa" path="res://Sci-Fi_Starter_Kit/Prefabs/Airing_01HD_Stuff_01_Norm.tscn" id="115_gttkg"]
 [ext_resource type="PackedScene" uid="uid://d4n4ub6itg3ns" path="res://Sci-Fi_Starter_Kit/Prefabs/Door_Left_01.tscn" id="116_hiwvf"]
 [ext_resource type="PackedScene" uid="uid://d4n4ub6itg3nk" path="res://Sci-Fi_Starter_Kit/Prefabs/Door_Left_01Glass.tscn" id="117_ed5de"]
+[ext_resource type="Script" uid="uid://dns1gu38sb65k" path="res://scripts/passthrough_control_panel.gd" id="117_u81y6"]
 [ext_resource type="PackedScene" uid="uid://d4n4ub6itgvv7" path="res://Sci-Fi_Starter_Kit/Prefabs/Door_Right_01.tscn" id="118_e31mi"]
 [ext_resource type="PackedScene" uid="uid://d4n4ub6itgvvy" path="res://Sci-Fi_Starter_Kit/Prefabs/Door_Right_01Glass.tscn" id="119_mq14a"]
 [ext_resource type="PackedScene" uid="uid://d4n4ub6itgpr7" path="res://Sci-Fi_Starter_Kit/Prefabs/Crate_01.tscn" id="120_yf6j3"]
@@ -34372,3 +34373,7 @@ debug_fill = false
 
 [node name="Wall_Cube_01_Round" parent="_Cache_Misere/Wall_Cube_01_Round_5071" unique_id=1268991521 instance=ExtResource("122_a1n43")]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+
+[node name="PassthroughControls" type="CanvasLayer" parent="." unique_id=1335078026]
+layer = 128
+script = ExtResource("117_u81y6")
