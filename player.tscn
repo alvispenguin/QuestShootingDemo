@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="2_i3pqv"]
 [ext_resource type="Script" uid="uid://buagi0q1adb82" path="res://right_hand_controller.gd" id="4_sweqy"]
 [ext_resource type="Script" uid="uid://d37nrbofqqx0h" path="res://scripts/setup_passthrough_sim.gd" id="7_1jxqw"]
+[ext_resource type="PackedScene" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="8_pointer"]
+[ext_resource type="PackedScene" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="9_panel_3d"]
+[ext_resource type="PackedScene" path="res://scenes/passthrough_control_panel.tscn" id="10_panel_ui"]
+[ext_resource type="Script" path="res://scripts/passthrough_panel_anchor.gd" id="11_panel_anchor"]
 
 [node name="XROrigin3D" type="XROrigin3D" unique_id=31731761]
 
@@ -30,7 +34,21 @@ bullet_scene = ExtResource("2_2hs0m")
 [node name="RightHand" parent="RightHandController" unique_id=1199403658 instance=ExtResource("2_i3pqv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10430491, 0, 0)
 
+[node name="FunctionPointer" parent="RightHandController" instance=ExtResource("8_pointer")]
+active_button_action = "by_button"
+laser_length = 1
+show_target = true
+
 [node name="FunctionPickup" parent="RightHandController/RightHand" unique_id=1951988662 instance=ExtResource("2_hqtel")]
 
 [node name="Quest3PassthroughSim" type="Node" parent="." unique_id=381340912]
 script = ExtResource("7_1jxqw")
+
+[node name="PassthroughControlsAnchor" type="Node3D" parent="."]
+script = ExtResource("11_panel_anchor")
+
+[node name="PassthroughControls3D" parent="PassthroughControlsAnchor" instance=ExtResource("9_panel_3d")]
+scene = ExtResource("10_panel_ui")
+screen_size = Vector2(0.8, 0.6)
+viewport_size = Vector2(800, 600)
+unshaded = true
