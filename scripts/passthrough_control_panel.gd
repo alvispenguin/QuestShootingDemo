@@ -52,7 +52,7 @@ func _create_ui() -> void:
 	vbox.add_child(title)
 
 	var instructions := Label.new()
-	instructions.text = "Aim with the right controller; press B to interact."
+	instructions.text = "Right controller: A show/hide, B interact."
 	instructions.add_theme_font_size_override("font_size", 20)
 	vbox.add_child(instructions)
 

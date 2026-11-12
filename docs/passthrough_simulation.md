@@ -5,9 +5,10 @@ simulates a camera-like view of the **rendered virtual environment**; it does
 not access or modify the Quest's real camera passthrough. This is an artistic
 approximation, not a calibrated model of any Quest firmware or hardware.
 
-Run the main scene on the headset. Use the right controller and B to interact
-with the world-space control panel. The panel adjusts static warp, animated
-swim, edge warp, softness, grain, and edge darkening. Use "Simulation enabled"
+Run the main scene on the headset. Press A on the right controller to show or
+hide the world-space control panel; it stays at its original position when
+reopened. Aim at the panel and press B to interact with it. The panel adjusts
+static warp, animated swim, edge warp, softness, grain, and edge darkening. Use "Simulation enabled"
 to compare with the unmodified view, and "Reset to Defaults" to restore the
 sliders. The edge darkening suggests a restricted field of view; it does not
 change the headset's optics or actual field of view.
