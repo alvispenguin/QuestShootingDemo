@@ -1,0 +1,126 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+
+\title{Passthrough-Style Simulation Equations}
+\author{Quest Shooting Demo}
+\date{}
+
+\newcommand{\clamp}{\operatorname{clamp}}
+\newcommand{\smoothstep}{\operatorname{smoothstep}}
+\newcommand{\fract}{\operatorname{fract}}
+\newcommand{\lerp}{\operatorname{lerp}}
+
+\begin{document}
+\maketitle
+
+\section{Overview}
+This document describes the project's screen-space shader and its head-motion
+controller. It modifies a rendered
+virtual scene; it does not access the Quest camera feed. The effect is an
+artistic approximation, not a calibrated model of Quest hardware.
+
+All vector operations below are component-wise unless stated otherwise.
+Screen coordinates $\mathbf{u}=(u,v)$ range from $0$ to $1$, and $t$ is
+elapsed time in seconds.
+
+\section{View center and edge weight}
+Let $\mathbf{c}$ be the projected forward view center for the current rendering
+view, obtained from the projection matrix in the vertex shader. For each pixel,
+\begin{align}
+  \mathbf{p} &= \mathbf{u}-\mathbf{c}, &
+  r &= \lVert \mathbf{p}\rVert_2, &
+  e &= \smoothstep(0.2,0.75,r).
+\end{align}
+The edge weight $e$ increases from zero toward one away from the view center.
+
+\section{Geometric warp}
+With warp strength $k_w=0.035$ and edge warp boost $k_e=1.4$ by default,
+\begin{align}
+  w &= 1+k_w r^2(1+k_e e),\\
+  \mathbf{u}_0 &= \mathbf{c}+\mathbf{p}w,\\
+  \Delta\mathbf{u}_{\text{edge}} &= 0.6\,k_w e\mathbf{p}.
+\end{align}
+The edge displacement is added after the swim offsets.
+
+\section{Head motion and animated swim}
+The controller compares camera orientations on consecutive frames:
+\begin{align}
+  R_{\Delta} &= R_{\text{previous}}^{-1}R_{\text{current}},\\
+  a &= \lVert\operatorname{Euler}(R_{\Delta})\rVert_2,\\
+  m &= \clamp(a\,s,0,1),\\
+  h_{\text{new}} &= \lerp\!\left(
+    h_{\text{previous}},m,1-e^{-\Delta t/\tau}\right).
+\end{align}
+Here $s=4.0$ is the default motion sensitivity, $\tau=0.12$ seconds is
+the default smoothing time, and $\Delta t$ is the frame duration. The
+angle change is measured per frame, rather than divided by $\Delta t$;
+consequently the response also depends on frame rate.
+
+With swim strength $k_s=0.018$ by default, $h=h_{\text{new}}$, and
+$T=1.7t$, the shader calculates:
+\begin{align}
+  A &= k_s(0.4+1.6h),\\
+  u_1 &= u_{0x}+A(0.3+e)\sin(12u_{0y}+T),\\
+  v_1 &= u_{0y}+A(0.3+0.8e)\cos(11u_1+0.9T),\\
+  \mathbf{u}' &= (u_1,v_1)+\Delta\mathbf{u}_{\text{edge}}.
+\end{align}
+The vertical offset uses the already modified horizontal coordinate $u_1$.
+The $0.4k_s$ term causes swim even when the head is still. Motion here
+represents rotation only, not translation or scene depth.
+
+\section{Softness}
+Let $\mathbf{D}=(W,H)$ be the viewport size in pixels, $b=0.7$ the default
+softness in pixels, and $\mathbf{d}=(b/W,b/H)$. Let $I(\mathbf{x})$ be the
+screen texture sampled at $\mathbf{x}$ after clamping each coordinate to
+$[0.001,0.999]$. The blurred color is
+\begin{align}
+  B={}&0.4I(\mathbf{u}')\notag\\
+  &+0.15I(\mathbf{u}'+(d_x,0))
+   +0.15I(\mathbf{u}'-(d_x,0))\notag\\
+  &+0.15I(\mathbf{u}'+(0,d_y))
+   +0.15I(\mathbf{u}'-(0,d_y)).
+\end{align}
+The five weights sum to one.
+
+\section{Grain}
+The luminance of the blurred color $B=(B_R,B_G,B_B)$ is
+\begin{equation}
+  L=0.2126B_R+0.7152B_G+0.0722B_B.
+\end{equation}
+The shader constructs a pseudo-random noise value using
+\begin{align}
+  \mathbf{q} &= \lfloor\mathbf{u}\mathbf{D}\rfloor+\lfloor24t\rfloor,\\
+  N &= \fract\!\left(
+    \sin\!\bigl(\mathbf{q}\cdot(12.9898,78.233)\bigr)
+    \,43758.5453\right)-0.5.
+\end{align}
+The scalar $\lfloor24t\rfloor$ is added to both components of $\mathbf{q}$.
+With grain strength $k_g=0.015$ by default, the resulting color is
+\begin{equation}
+  G=B+N\,k_g\bigl(1.25-\clamp(L,0,1)\bigr).
+\end{equation}
+The noise is stronger in darker rendered regions; it does not measure
+physical lighting conditions.
+
+\section{Edge darkening and output}
+With edge-darkening strength $k_v=0.2$ by default,
+\begin{align}
+  V &= \smoothstep(0.45,0.71,r),\\
+  C_{\text{out}} &= \clamp\bigl(G(1-k_vV),0,1\bigr).
+\end{align}
+The final clamp is applied separately to each RGB component. The vignette
+suggests a limited view but does not change the headset's physical field
+of view.
+
+\section{Pipeline}
+\begin{equation*}
+  \boxed{\text{Output}=
+  \text{edge darkening}\bigl(
+  \text{softened, warped scene}+\text{grain}\bigr)}
+\end{equation*}
+The screen texture contains opaque scene rendering; transparent objects and
+UI may not receive the effect.
+
+\end{document}

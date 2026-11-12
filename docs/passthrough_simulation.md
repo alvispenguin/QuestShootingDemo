@@ -22,3 +22,17 @@ the screen texture can be expensive in XR, and the blur adds multiple texture
 samples. Lowering an effect's slider does not eliminate the cost of the
 full-screen pass; disabling the simulation removes the pass. Stop testing if
 the effect causes discomfort.
+
+## Mathematical description
+
+The standalone LaTeX source [passthrough_simulation_equations.tex](passthrough_simulation_equations.tex)
+describes the shader and motion controller equations. To compile it with a
+LaTeX distribution that includes `pdflatex`, open PowerShell in the repository
+root and run:
+
+```powershell
+pdflatex -interaction=nonstopmode -halt-on-error -output-directory=docs docs\passthrough_simulation_equations.tex
+```
+
+The resulting PDF is `docs\passthrough_simulation_equations.pdf`. Alternatively,
+open the `.tex` file in a LaTeX editor or Overleaf and compile it with pdfLaTeX.
