@@ -6,7 +6,6 @@ extends Control
 
 const DEFAULTS := {
 	"warp_strength": 0.035,
-	"swim_strength": 0.018,
 	"edge_warp_boost": 1.4,
 	"softness_pixels": 0.7,
 	"grain_strength": 0.015,
@@ -71,7 +70,6 @@ func _create_ui() -> void:
 	grid.add_theme_constant_override("v_separation", 8)
 	vbox.add_child(grid)
 	grid.add_child(_make_slider("Warp Strength", 0.15, "warp_strength"))
-	grid.add_child(_make_slider("Swim Strength", 0.08, "swim_strength"))
 	grid.add_child(_make_slider("Edge Warp Boost", 3.0, "edge_warp_boost"))
 	grid.add_child(_make_slider("Softness (pixels)", 3.0, "softness_pixels"))
 	grid.add_child(_make_slider("Grain Strength", 0.1, "grain_strength"))

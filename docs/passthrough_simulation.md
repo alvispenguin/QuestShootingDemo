@@ -8,15 +8,17 @@ approximation, not a calibrated model of any Quest firmware or hardware.
 Run the main scene on the headset. Press A on the right controller to show or
 hide the world-space control panel; it stays at its original position when
 reopened. Aim at the panel and press B to interact with it. The panel adjusts
-static warp, animated swim, edge warp, softness, grain, and edge darkening. Use "Simulation enabled"
-to compare with the unmodified view, and "Reset to Defaults" to restore the
+static warp, edge warp, softness, grain, and edge darkening. Animated swim is
+disabled by default and its control is hidden. Use "Simulation enabled" to
+compare with the unmodified view, and "Reset to Defaults" to restore the
 sliders. The edge darkening suggests a restricted field of view; it does not
 change the headset's optics or actual field of view.
 
 The post-process reads Godot's 3D screen texture, which contains opaque scene
 rendering rather than the real camera feed. Transparent objects and UI may not
-receive the effect. The swim responds to camera rotation, not depth or
-translation, and is also animated while stationary.
+receive the effect. The shader still supports swim if enabled programmatically;
+it responds to camera rotation, not depth or translation, and is also animated
+while stationary.
 
 Test both eyes on the target headset and check frame rate and comfort. Reading
 the screen texture can be expensive in XR, and the blur adds multiple texture

@@ -31,6 +31,7 @@ func setup() -> void:
 
 	_material = ShaderMaterial.new()
 	_material.shader = shader
+	_material.set_shader_parameter("swim_strength", 0.0)
 	_material.render_priority = -128
 	var quad := QuadMesh.new()
 	quad.size = Vector2(2.0, 2.0)

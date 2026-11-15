@@ -58,7 +58,7 @@ the default smoothing time, and $\Delta t$ is the frame duration. The
 angle change is measured per frame, rather than divided by $\Delta t$;
 consequently the response also depends on frame rate.
 
-With swim strength $k_s=0.018$ by default, $h=h_{\text{new}}$, and
+With swim strength $k_s=0$ by default, $h=h_{\text{new}}$, and
 $T=1.7t$, the shader calculates:
 \begin{align}
   A &= k_s(0.4+1.6h),\\
@@ -67,8 +67,9 @@ $T=1.7t$, the shader calculates:
   \mathbf{u}' &= (u_1,v_1)+\Delta\mathbf{u}_{\text{edge}}.
 \end{align}
 The vertical offset uses the already modified horizontal coordinate $u_1$.
-The $0.4k_s$ term causes swim even when the head is still. Motion here
-represents rotation only, not translation or scene depth.
+Animated swim is disabled by default and has no control in the panel. If
+enabled programmatically, the $0.4k_s$ term causes swim even when the head is
+still. Motion here represents rotation only, not translation or scene depth.
 
 \section{Softness}
 Let $\mathbf{D}=(W,H)$ be the viewport size in pixels, $b=0.7$ the default

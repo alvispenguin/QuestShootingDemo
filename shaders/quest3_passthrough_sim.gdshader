@@ -5,7 +5,7 @@ uniform sampler2D screen_texture : hint_screen_texture, filter_linear;
 uniform float time = 0.0;
 uniform float head_motion : hint_range(0.0, 1.0) = 0.0;
 uniform float warp_strength : hint_range(0.0, 0.15) = 0.035;
-uniform float swim_strength : hint_range(0.0, 0.08) = 0.018;
+uniform float swim_strength : hint_range(0.0, 0.08) = 0.0;
 uniform float edge_warp_boost : hint_range(0.0, 3.0) = 1.4;
 uniform float softness_pixels : hint_range(0.0, 3.0) = 0.7;
 uniform float grain_strength : hint_range(0.0, 0.1) = 0.015;

@@ -62,10 +62,10 @@ for the SDK and signing setup.
 ## Passthrough-style simulation
 
 The simulation starts automatically with the player. Its panel controls warp,
-swim, edge warp, softness, grain, and edge darkening. Swim responds to head
-rotation and continues subtly while stationary; it does not model depth or
-head translation. Edge darkening suggests a restricted view but does not
-change the headset's actual field of view.
+edge warp, softness, grain, and edge darkening. Animated swim is disabled by
+default and has no panel control; static warp remains available. Edge darkening
+suggests a restricted view but does not change the headset's actual field of
+view.
 
 The effect reads the 3D screen texture, so transparent objects and UI may not
 be affected. Screen-texture reads and blur samples can be expensive in XR.
