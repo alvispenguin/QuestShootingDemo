@@ -4,16 +4,14 @@ extends Control
 
 @export var target_material: ShaderMaterial
 
-const DEFAULTS := {
-	"warp_strength": 0.035,
-	"edge_warp_boost": 1.4,
-	"softness_pixels": 0.7,
-	"grain_strength": 0.015,
-	"vignette_strength": 0.2,
+const CONTROLS := {
+	"warp_strength": {"default": 20, "max": 20},
+	"edge_warp_boost": {"default": 14, "max": 30},
 }
 
 var _simulation: Node
-var _sliders: Dictionary = {}
+var _values: Dictionary = {}
+var _value_labels: Dictionary = {}
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -55,25 +53,21 @@ func _create_ui() -> void:
 	instructions.add_theme_font_size_override("font_size", 20)
 	vbox.add_child(instructions)
 
-	var enabled := CheckButton.new()
-	enabled.text = "Simulation enabled"
+	var enabled := Button.new()
+	enabled.toggle_mode = true
+	enabled.text = "Simulation: ON"
 	enabled.button_pressed = true
+	enabled.custom_minimum_size = Vector2(0, 80)
+	enabled.add_theme_font_size_override("font_size", 28)
 	enabled.disabled = not _simulation or not _simulation.has_method("set_enabled")
 	enabled.toggled.connect(func(value: bool) -> void:
+		enabled.text = "Simulation: ON" if value else "Simulation: OFF"
 		_simulation.call("set_enabled", value)
 	)
 	vbox.add_child(enabled)
 
-	var grid := GridContainer.new()
-	grid.columns = 2
-	grid.add_theme_constant_override("h_separation", 24)
-	grid.add_theme_constant_override("v_separation", 8)
-	vbox.add_child(grid)
-	grid.add_child(_make_slider("Warp Strength", 0.15, "warp_strength"))
-	grid.add_child(_make_slider("Edge Warp Boost", 3.0, "edge_warp_boost"))
-	grid.add_child(_make_slider("Softness (pixels)", 3.0, "softness_pixels"))
-	grid.add_child(_make_slider("Grain Strength", 0.1, "grain_strength"))
-	grid.add_child(_make_slider("Edge Darkening", 1.0, "vignette_strength"))
+	vbox.add_child(_make_stepper("Warp Strength", "warp_strength"))
+	vbox.add_child(_make_stepper("Edge Warp Boost", "edge_warp_boost"))
 
 	var reset_btn := Button.new()
 	reset_btn.text = "Reset to Defaults"
@@ -82,41 +76,49 @@ func _create_ui() -> void:
 	reset_btn.pressed.connect(_on_reset)
 	vbox.add_child(reset_btn)
 
-func _make_slider(label_text: String, max_val: float, parameter: String) -> Control:
-	var container := VBoxContainer.new()
-	container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	container.add_theme_constant_override("separation", 4)
-
-	var label_row := HBoxContainer.new()
+func _make_stepper(label_text: String, parameter: String) -> Control:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 12)
 	var label := Label.new()
 	label.text = label_text
-	label.add_theme_font_size_override("font_size", 20)
+	label.add_theme_font_size_override("font_size", 24)
 	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	label_row.add_child(label)
+	row.add_child(label)
+
+	var decrease := Button.new()
+	decrease.text = "<"
+	decrease.custom_minimum_size = Vector2(80, 68)
+	decrease.add_theme_font_size_override("font_size", 30)
+	decrease.pressed.connect(func() -> void: _change_value(parameter, -1))
+	row.add_child(decrease)
 
 	var value_label := Label.new()
-	value_label.text = "%.3f" % DEFAULTS[parameter]
-	value_label.add_theme_font_size_override("font_size", 20)
-	label_row.add_child(value_label)
-	container.add_child(label_row)
+	value_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	value_label.custom_minimum_size = Vector2(72, 0)
+	value_label.add_theme_font_size_override("font_size", 26)
+	row.add_child(value_label)
+	_value_labels[parameter] = value_label
+	_set_value(parameter, CONTROLS[parameter]["default"])
 
-	var slider := HSlider.new()
-	slider.min_value = 0.0
-	slider.max_value = max_val
-	slider.step = 0.001
-	slider.value = DEFAULTS[parameter]
-	slider.custom_minimum_size = Vector2(0, 36)
-	slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	slider.focus_mode = Control.FOCUS_ALL
-	slider.value_changed.connect(func(value: float) -> void:
-		value_label.text = "%.3f" % value
-		if target_material:
-			target_material.set_shader_parameter(parameter, value)
-	)
-	container.add_child(slider)
-	_sliders[parameter] = slider
-	return container
+	var increase := Button.new()
+	increase.text = ">"
+	increase.custom_minimum_size = Vector2(80, 68)
+	increase.add_theme_font_size_override("font_size", 30)
+	increase.pressed.connect(func() -> void: _change_value(parameter, 1))
+	row.add_child(increase)
+	return row
+
+func _change_value(parameter: String, delta: int) -> void:
+	_set_value(parameter, _values[parameter] + delta)
+
+func _set_value(parameter: String, steps: int) -> void:
+	var bounded := clampi(steps, 0, CONTROLS[parameter]["max"])
+	_values[parameter] = bounded
+	var value := bounded / 10.0
+	_value_labels[parameter].text = "%.1f" % value
+	if target_material:
+		target_material.set_shader_parameter(parameter, value)
 
 func _on_reset() -> void:
-	for parameter in DEFAULTS:
-		_sliders[parameter].value = DEFAULTS[parameter]
+	for parameter in CONTROLS:
+		_set_value(parameter, CONTROLS[parameter]["default"])

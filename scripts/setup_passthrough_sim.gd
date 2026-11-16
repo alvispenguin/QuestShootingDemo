@@ -31,7 +31,6 @@ func setup() -> void:
 
 	_material = ShaderMaterial.new()
 	_material.shader = shader
-	_material.set_shader_parameter("swim_strength", 0.0)
 	_material.render_priority = -128
 	var quad := QuadMesh.new()
 	quad.size = Vector2(2.0, 2.0)
@@ -42,13 +41,6 @@ func setup() -> void:
 	_effect.extra_cull_margin = 16384.0
 	_effect.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	camera.add_child(_effect)
-
-	var controller := Node.new()
-	controller.name = "PassthroughSimController"
-	controller.set_script(load("res://scripts/passthrough_sim_controller.gd"))
-	controller.set("shader_material", _material)
-	controller.set("camera_path", camera.get_path())
-	add_child(controller)
 
 func get_material() -> ShaderMaterial:
 	return _material

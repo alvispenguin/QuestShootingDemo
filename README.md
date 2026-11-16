@@ -56,19 +56,19 @@ for the SDK and signing setup.
   remains at its original position when reopened.
 - Aim the right controller at the passthrough controls and press **B** to
   interact.
-- Use **Simulation enabled** to compare the effect with the unmodified view,
-  and **Reset to Defaults** to restore the slider values.
+- Use **Simulation: ON/OFF** to compare the effect with the unmodified view,
+  and **Reset to Defaults** to restore the control values. Use the `<` and
+  `>` buttons to adjust warp strength and edge warp boost.
 
 ## Passthrough-style simulation
 
-The simulation starts automatically with the player. Its panel controls warp,
-edge warp, softness, grain, and edge darkening. Animated swim is disabled by
-default and has no panel control; static warp remains available. Edge darkening
-suggests a restricted view but does not change the headset's actual field of
-view.
+The simulation starts automatically with the player. It applies static geometric
+warp only. Warp strength defaults to 2.0 and can be adjusted from 0.0 to 2.0
+in 0.1 steps; edge warp boost defaults to 1.4 and ranges from 0.0 to 3.0 in
+0.1 steps. Strong warp may produce substantial distortion at the view edges.
 
 The effect reads the 3D screen texture, so transparent objects and UI may not
-be affected. Screen-texture reads and blur samples can be expensive in XR.
+be affected. Screen-texture reads can be expensive in XR.
 Test both eyes and frame rate on the target headset, and stop if the effect
 causes discomfort.
 
@@ -82,7 +82,7 @@ included.
 - [`main.tscn`](main.tscn): environment, XR startup, player, and target spawner.
 - [`player.tscn`](player.tscn): XR camera, controllers, simulation setup, and
   control panel.
-- [`scripts/`](scripts/): simulation setup, motion controller, and panel logic.
+- [`scripts/`](scripts/): simulation setup and panel logic.
 - [`shaders/`](shaders/): passthrough-style screen shader.
 - [`target_spawner.gd`](target_spawner.gd), [`target.gd`](target.gd), and
   [`bullet.gd`](bullet.gd): shooting and target behavior.
