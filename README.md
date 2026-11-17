@@ -56,26 +56,30 @@ for the SDK and signing setup.
   remains at its original position when reopened.
 - Aim the right controller at the passthrough controls and press **B** to
   interact.
-- Use **Simulation: ON/OFF** to compare the effect with the unmodified view,
-  and **Reset to Defaults** to restore the control values. Use the `<` and
-  `>` buttons to adjust warp strength and edge warp boost.
+- Use **Simulation: ON/OFF** to compare the effect with the unmodified view.
+  Use the `<` and `>` buttons to adjust the five OpenCV coefficients, and
+  **Reset Coefficients to Zero** to clear them.
 
 ## Passthrough-style simulation
 
-The simulation starts automatically with the player. It applies static geometric
-warp only. Warp strength defaults to 2.0 and can be adjusted from 0.0 to 2.0
-in 0.1 steps; edge warp boost defaults to 1.4 and ranges from 0.0 to 3.0 in
-0.1 steps. Strong warp may produce substantial distortion at the view edges.
+The simulation starts automatically with the player. It applies OpenCV's
+five-coefficient radial and tangential camera-distortion model to the rendered
+virtual scene. The panel exposes $k_1$, $k_2$, $k_3$, $p_1$, and $p_2$; all
+default to zero because no calibration data is included. For realistic camera
+distortion, supply coefficients calibrated for the target camera and image
+geometry.
 
 The effect reads the 3D screen texture, so transparent objects and UI may not
 be affected. Screen-texture reads can be expensive in XR.
 Test both eyes and frame rate on the target headset, and stop if the effect
 causes discomfort.
 
-See the [simulation guide](docs/passthrough_simulation.md) for details and
-build instructions for the [LaTeX equations](docs/passthrough_simulation_equations.tex).
-A [compiled equations PDF](docs/passthrough_simulation_equations.pdf) is also
-included.
+See the [simulation guide](docs/passthrough_simulation.md) and the
+[OpenCV model equations](docs/opencv_camera_calibration.tex); the compiled
+[equations PDF](docs/opencv_camera_calibration.pdf) is included. The previous
+custom-warp equations remain available in
+[passthrough_simulation_equations.tex](docs/passthrough_simulation_equations.tex)
+for historical reference.
 
 ## Project layout
 

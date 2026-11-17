@@ -1,0 +1,106 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{xurl}
+
+\title{OpenCV Camera Calibration Distortion Model}
+\author{Quest Shooting Demo}
+\date{}
+
+\newcommand{\clamp}{\operatorname{clamp}}
+
+\begin{document}
+\maketitle
+
+\section{Scope}
+This document describes the OpenCV five-coefficient camera-distortion model
+used by the project's screen-space shader. It modifies the rendered virtual
+scene; it does not access the Quest camera feed or model Quest passthrough.
+It is not a headset display-lens correction. All coefficients default to zero
+because no calibration measurements have been supplied.
+
+\section{OpenCV forward distortion model}
+Let $(x,y)$ be undistorted normalized camera coordinates and
+$r^2=x^2+y^2$. The OpenCV documentation defines a radial scale and applies tangential
+distortion:
+\begin{align}
+  R(r) &= 1+k_1r^2+k_2r^4+k_3r^6,\\
+  x_d &= xR(r)+2p_1xy+p_2(r^2+2x^2),\\
+  y_d &= yR(r)+p_1(r^2+2y^2)+2p_2xy.
+\end{align}
+Here $k_1,k_2,k_3$ are radial coefficients and $p_1,p_2$ are tangential
+coefficients. In the OpenCV five-value ordering, the vector is
+$(k_1,k_2,p_1,p_2,k_3)$.
+
+\section{Inverse mapping for the screen shader}
+The forward calibration map sends a source point to its distorted image
+position. A screen shader instead starts with an output pixel and must find
+the corresponding source pixel. Define
+\begin{equation}
+  \mathbf{d}(x,y)=
+  \begin{bmatrix}x_d(x,y)\\y_d(x,y)\end{bmatrix},
+  \qquad
+  \mathbf{q}=
+  \begin{bmatrix}x_d^{\mathrm{target}}\\y_d^{\mathrm{target}}\end{bmatrix}.
+\end{equation}
+The desired source coordinate satisfies
+\begin{equation}
+  \mathbf{d}(\mathbf{x})=\mathbf{q}.
+\end{equation}
+The shader solves this with eight Newton iterations, initialized at
+$\mathbf{x}_0=\mathbf{q}$:
+\begin{align}
+  \mathbf{r}_n &= \mathbf{d}(\mathbf{x}_n)-\mathbf{q},\\
+  \mathbf{x}_{n+1} &=
+  \mathbf{x}_n-\mathbf{J}(\mathbf{x}_n)^{-1}\mathbf{r}_n,
+\end{align}
+where $\mathbf{J}$ is the Jacobian of the forward map. If its determinant is
+too close to zero, that iteration is skipped.
+
+For completeness, write
+\begin{align}
+  s &= 1+k_1r^2+k_2r^4+k_3r^6,\\
+  g &= k_1+2k_2r^2+3k_3r^4.
+\end{align}
+The Jacobian used by the shader is
+\begin{equation}
+\mathbf{J}=
+\begin{bmatrix}
+s+2x^2g+2p_1y+6p_2x &
+2xyg+2p_1x+2p_2y\\
+2xyg+2p_1x+2p_2y &
+s+2y^2g+6p_1y+2p_2x
+\end{bmatrix}.
+\end{equation}
+The shader converts screen UV to normalized camera coordinates using the
+projected view center and per-eye projection focal scales. It converts the
+recovered undistorted coordinate back to source UV and clamps the texture
+lookup to the image bounds.
+
+\section{Panel controls}
+The in-world panel exposes all five coefficients. Its ranges and increments
+are editing conveniences, not limits specified by OpenCV:
+\begin{center}
+\begin{tabular}{c|c|c}
+Coefficient & Range & Increment\\
+\hline
+$k_1$ & $[-1,1]$ & $0.01$\\
+$k_2$ & $[-1,1]$ & $0.001$\\
+$p_1$ & $[-0.1,0.1]$ & $0.001$\\
+$p_2$ & $[-0.1,0.1]$ & $0.001$\\
+$k_3$ & $[-1,1]$ & $0.0001$
+\end{tabular}
+\end{center}
+These ranges are UI choices, not limits specified by OpenCV. Use coefficients
+estimated from a calibration dataset for the intended camera and image
+geometry. Arbitrarily chosen coefficients only create a visual effect and may
+make the inverse mapping poorly conditioned or visibly distorted.
+
+\section{Reference}
+The equations follow OpenCV's
+\href{https://github.com/opencv/opencv/blob/4.x/doc/py_tutorials/py_calib3d/py_calibration/py_calibration.markdown}
+{camera calibration tutorial}.
+
+\end{document}
