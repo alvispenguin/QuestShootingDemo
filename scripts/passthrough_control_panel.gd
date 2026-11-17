@@ -13,16 +13,23 @@ const COEFFICIENTS := {
 }
 
 var _simulation: Node
+var _panel_anchor: Node3D
+var _panel_surface: Node
 var _values: Dictionary = {}
 var _value_labels: Dictionary = {}
+var _dragging := false
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_simulation = get_tree().root.find_child("Quest3PassthroughSim", true, false)
+	_panel_anchor = get_tree().root.find_child("PassthroughControlsAnchor", true, false) as Node3D
+	_panel_surface = get_tree().root.find_child("PassthroughControls3D", true, false)
 	if not target_material and _simulation and _simulation.has_method("get_material"):
 		target_material = _simulation.get_material() as ShaderMaterial
 	if not target_material:
 		push_warning("Passthrough controls could not find the simulation material.")
+	if not _panel_anchor or not _panel_surface:
+		push_warning("Passthrough controls could not find the movable panel anchor or surface.")
 	_create_ui()
 
 func _create_ui() -> void:
@@ -46,13 +53,20 @@ func _create_ui() -> void:
 	vbox.add_theme_constant_override("separation", 6)
 	panel.add_child(vbox)
 
+	var drag_handle := HBoxContainer.new()
+	drag_handle.custom_minimum_size.y = 36
+	drag_handle.mouse_filter = Control.MOUSE_FILTER_STOP
+	drag_handle.gui_input.connect(_on_drag_handle_gui_input)
+	vbox.add_child(drag_handle)
+
 	var title := Label.new()
 	title.text = "CAMERA DISTORTION"
 	title.add_theme_font_size_override("font_size", 26)
-	vbox.add_child(title)
+	title.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	drag_handle.add_child(title)
 
 	var instructions := Label.new()
-	instructions.text = "Right controller: A show/hide, B interact."
+	instructions.text = "A show/hide, B interact. Drag title to move."
 	instructions.add_theme_font_size_override("font_size", 18)
 	vbox.add_child(instructions)
 
@@ -83,6 +97,17 @@ func _create_ui() -> void:
 	reset_btn.add_theme_font_size_override("font_size", 20)
 	reset_btn.pressed.connect(_on_reset)
 	vbox.add_child(reset_btn)
+
+func _on_drag_handle_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		_dragging = event.pressed
+		accept_event()
+	elif event is InputEventMouseMotion and _dragging:
+		if _panel_anchor and _panel_surface:
+			var screen_size: Vector2 = _panel_surface.get("screen_size")
+			var viewport_size: Vector2 = _panel_surface.get("viewport_size")
+			_panel_anchor.call("move_panel_by_screen_delta", event.relative, screen_size, viewport_size)
+		accept_event()
 
 func _make_stepper(parameter: String) -> Control:
 	var row := HBoxContainer.new()

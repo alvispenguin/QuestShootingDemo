@@ -55,7 +55,7 @@ for the SDK and signing setup.
 - Press **A** on the right controller to show or hide the controls panel. It
   remains at its original position when reopened.
 - Aim the right controller at the passthrough controls and press **B** to
-  interact.
+  interact. Drag the panel title bar to reposition it.
 - Use **Simulation: ON/OFF** to compare the effect with the unmodified view.
   Use the `±` buttons to adjust the five OpenCV coefficients with coarse or
   fine steps, and **Reset Coefficients to Zero** to clear them.

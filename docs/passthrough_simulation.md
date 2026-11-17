@@ -7,7 +7,8 @@ camera passthrough.
 
 Run the main scene on the headset. Press A on the right controller to show or
 hide the world-space control panel; it stays at its original position when
-reopened. Aim at the panel and press B to interact with it. The panel exposes
+reopened. Drag the panel title bar with the pointer to move it in the view.
+Aim at the panel and press B to interact with it. The panel exposes
 OpenCV's five distortion coefficients: radial $k_1$, $k_2$, $k_3$ and
 tangential $p_1$, $p_2$. Use the `<` and `>` buttons to adjust them, "Reset
 Coefficients to Zero" to clear them, and "Simulation: ON/OFF" to compare with
