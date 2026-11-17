@@ -87,17 +87,20 @@ are editing conveniences, not limits specified by OpenCV:
 Coefficient & Range & Fine step & Coarse step\\
 \hline
 $k_1$ & $[-1,1]$ & $0.01$ & $0.1$\\
-$k_2$ & $[-1,1]$ & $0.001$ & $0.01$\\
-$p_1$ & $[-0.1,0.1]$ & $0.001$ & $0.01$\\
-$p_2$ & $[-0.1,0.1]$ & $0.001$ & $0.01$\\
-$k_3$ & $[-1,1]$ & $0.0001$ & $0.01$
+$k_2$ & $[-1,1]$ & $0.01$ & $0.1$\\
+$p_1$ & $[-1,1]$ & $0.01$ & $0.1$\\
+$p_2$ & $[-1,1]$ & $0.01$ & $0.1$\\
+$k_3$ & $[-1,1]$ & $0.01$ & $0.1$
 \end{tabular}
 \end{center}
-The two middle controls adjust by the fine step; the outer controls adjust by
-the coarse step. These ranges and steps are UI choices, not limits specified by OpenCV. Use coefficients
-estimated from a calibration dataset for the intended camera and image
-geometry. Arbitrarily chosen coefficients only create a visual effect and may
-make the inverse mapping poorly conditioned or visibly distorted.
+All coefficient rows show the same controls from left to right:
+\texttt{-0.1}, \texttt{-0.01}, the current value,
+\texttt{+0.01}, \texttt{+0.1}. The outer buttons apply the coarse step and the
+buttons beside the value apply the fine step. These ranges and steps are UI
+choices, not limits specified by OpenCV. Use coefficients estimated from a
+calibration dataset for the intended camera and image geometry. Arbitrarily
+chosen coefficients only create a visual effect and may make the inverse
+mapping poorly conditioned or visibly distorted.
 
 \section{Reference}
 The equations follow OpenCV's

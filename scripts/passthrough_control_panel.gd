@@ -6,10 +6,10 @@ extends Control
 
 const COEFFICIENTS := {
 	"k1": {"min": -100, "max": 100, "default": 0, "step": 0.01, "coarse_steps": 10, "coarse_label": "0.1", "format": "%.2f"},
-	"k2": {"min": -1000, "max": 1000, "default": 0, "step": 0.001, "coarse_steps": 10, "coarse_label": "0.01", "format": "%.3f"},
-	"p1": {"min": -100, "max": 100, "default": 0, "step": 0.001, "coarse_steps": 10, "coarse_label": "0.01", "format": "%.3f"},
-	"p2": {"min": -100, "max": 100, "default": 0, "step": 0.001, "coarse_steps": 10, "coarse_label": "0.01", "format": "%.3f"},
-	"k3": {"min": -10000, "max": 10000, "default": 0, "step": 0.0001, "coarse_steps": 100, "coarse_label": "0.01", "format": "%.4f"},
+	"k2": {"min": -100, "max": 100, "default": 0, "step": 0.01, "coarse_steps": 10, "coarse_label": "0.1", "format": "%.2f"},
+	"p1": {"min": -100, "max": 100, "default": 0, "step": 0.01, "coarse_steps": 10, "coarse_label": "0.1", "format": "%.2f"},
+	"p2": {"min": -100, "max": 100, "default": 0, "step": 0.01, "coarse_steps": 10, "coarse_label": "0.1", "format": "%.2f"},
+	"k3": {"min": -100, "max": 100, "default": 0, "step": 0.01, "coarse_steps": 10, "coarse_label": "0.1", "format": "%.2f"},
 }
 
 var _simulation: Node
@@ -71,7 +71,7 @@ func _create_ui() -> void:
 	vbox.add_child(instructions)
 
 	var calibration_note := Label.new()
-	calibration_note.text = "Enter calibrated coefficients; defaults are zero."
+	calibration_note.text = "Enter distortion coefficients; defaults are zero."
 	calibration_note.add_theme_font_size_override("font_size", 16)
 	vbox.add_child(calibration_note)
 
