@@ -15,6 +15,12 @@ the unmodified view. Coefficients default to zero because no camera calibration
 data is included; use values calibrated for the camera and image geometry you
 intend to model.
 
+Each coefficient row has coarse adjustment buttons on the outside and fine
+adjustment buttons beside the displayed value. For $k_1$, $p_1$, and $p_2$,
+the steps are $0.1$ and $0.01$. For $k_2$ and $k_3$, they are $0.01$ and
+$0.001$; the fine $k_3$ step is $0.0001$. The button labels show the applied
+increment.
+
 The post-process reads Godot's 3D screen texture, which contains opaque scene
 rendering rather than the real camera feed. Transparent objects and UI may not
 receive the effect. The shader numerically inverts OpenCV's forward distortion

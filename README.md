@@ -57,8 +57,8 @@ for the SDK and signing setup.
 - Aim the right controller at the passthrough controls and press **B** to
   interact.
 - Use **Simulation: ON/OFF** to compare the effect with the unmodified view.
-  Use the `<` and `>` buttons to adjust the five OpenCV coefficients, and
-  **Reset Coefficients to Zero** to clear them.
+  Use the `±` buttons to adjust the five OpenCV coefficients with coarse or
+  fine steps, and **Reset Coefficients to Zero** to clear them.
 
 ## Passthrough-style simulation
 

@@ -5,11 +5,11 @@ extends Control
 @export var target_material: ShaderMaterial
 
 const COEFFICIENTS := {
-	"k1": {"min": -100, "max": 100, "default": 0, "step": 0.01, "format": "%.2f"},
-	"k2": {"min": -1000, "max": 1000, "default": 0, "step": 0.001, "format": "%.3f"},
-	"p1": {"min": -100, "max": 100, "default": 0, "step": 0.001, "format": "%.3f"},
-	"p2": {"min": -100, "max": 100, "default": 0, "step": 0.001, "format": "%.3f"},
-	"k3": {"min": -10000, "max": 10000, "default": 0, "step": 0.0001, "format": "%.4f"},
+	"k1": {"min": -100, "max": 100, "default": 0, "step": 0.01, "coarse_steps": 10, "coarse_label": "0.1", "format": "%.2f"},
+	"k2": {"min": -1000, "max": 1000, "default": 0, "step": 0.001, "coarse_steps": 10, "coarse_label": "0.01", "format": "%.3f"},
+	"p1": {"min": -100, "max": 100, "default": 0, "step": 0.001, "coarse_steps": 10, "coarse_label": "0.01", "format": "%.3f"},
+	"p2": {"min": -100, "max": 100, "default": 0, "step": 0.001, "coarse_steps": 10, "coarse_label": "0.01", "format": "%.3f"},
+	"k3": {"min": -10000, "max": 10000, "default": 0, "step": 0.0001, "coarse_steps": 100, "coarse_label": "0.01", "format": "%.4f"},
 }
 
 var _simulation: Node
@@ -94,28 +94,32 @@ func _make_stepper(parameter: String) -> Control:
 	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(label)
 
-	var decrease := Button.new()
-	decrease.text = "<"
-	decrease.custom_minimum_size = Vector2(58, 56)
-	decrease.add_theme_font_size_override("font_size", 26)
-	decrease.pressed.connect(func() -> void: _change_value(parameter, -1))
-	row.add_child(decrease)
+	var coefficient: Dictionary = COEFFICIENTS[parameter]
+	var coarse_step: int = coefficient["coarse_steps"]
+	var coarse_label: String = coefficient["coarse_label"]
+	var fine_label: String = (coefficient["format"] as String) % coefficient["step"]
+	row.add_child(_make_step_button("-" + coarse_label, parameter, -coarse_step))
+	row.add_child(_make_step_button("-" + fine_label, parameter, -1))
 
 	var value_label := Label.new()
 	value_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	value_label.custom_minimum_size = Vector2(96, 0)
+	value_label.custom_minimum_size = Vector2(100, 0)
 	value_label.add_theme_font_size_override("font_size", 20)
 	row.add_child(value_label)
 	_value_labels[parameter] = value_label
 	_set_value(parameter, COEFFICIENTS[parameter]["default"])
 
-	var increase := Button.new()
-	increase.text = ">"
-	increase.custom_minimum_size = Vector2(58, 56)
-	increase.add_theme_font_size_override("font_size", 26)
-	increase.pressed.connect(func() -> void: _change_value(parameter, 1))
-	row.add_child(increase)
+	row.add_child(_make_step_button("+" + fine_label, parameter, 1))
+	row.add_child(_make_step_button("+" + coarse_label, parameter, coarse_step))
 	return row
+
+func _make_step_button(label: String, parameter: String, delta: int) -> Button:
+	var button := Button.new()
+	button.text = label
+	button.custom_minimum_size = Vector2(76, 56)
+	button.add_theme_font_size_override("font_size", 20)
+	button.pressed.connect(func() -> void: _change_value(parameter, delta))
+	return button
 
 func _change_value(parameter: String, delta: int) -> void:
 	_set_value(parameter, _values[parameter] + delta)

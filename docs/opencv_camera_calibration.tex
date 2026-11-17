@@ -83,17 +83,18 @@ lookup to the image bounds.
 The in-world panel exposes all five coefficients. Its ranges and increments
 are editing conveniences, not limits specified by OpenCV:
 \begin{center}
-\begin{tabular}{c|c|c}
-Coefficient & Range & Increment\\
+\begin{tabular}{c|c|c|c}
+Coefficient & Range & Fine step & Coarse step\\
 \hline
-$k_1$ & $[-1,1]$ & $0.01$\\
-$k_2$ & $[-1,1]$ & $0.001$\\
-$p_1$ & $[-0.1,0.1]$ & $0.001$\\
-$p_2$ & $[-0.1,0.1]$ & $0.001$\\
-$k_3$ & $[-1,1]$ & $0.0001$
+$k_1$ & $[-1,1]$ & $0.01$ & $0.1$\\
+$k_2$ & $[-1,1]$ & $0.001$ & $0.01$\\
+$p_1$ & $[-0.1,0.1]$ & $0.001$ & $0.01$\\
+$p_2$ & $[-0.1,0.1]$ & $0.001$ & $0.01$\\
+$k_3$ & $[-1,1]$ & $0.0001$ & $0.01$
 \end{tabular}
 \end{center}
-These ranges are UI choices, not limits specified by OpenCV. Use coefficients
+The two middle controls adjust by the fine step; the outer controls adjust by
+the coarse step. These ranges and steps are UI choices, not limits specified by OpenCV. Use coefficients
 estimated from a calibration dataset for the intended camera and image
 geometry. Arbitrarily chosen coefficients only create a visual effect and may
 make the inverse mapping poorly conditioned or visibly distorted.
