@@ -5,11 +5,11 @@ extends Control
 @export var target_material: ShaderMaterial
 
 const COEFFICIENTS := {
-	"k1": {"min": -100, "max": 100, "default": 0, "step": 0.01, "coarse_steps": 10, "coarse_label": "0.1", "format": "%.2f"},
-	"k2": {"min": -100, "max": 100, "default": 0, "step": 0.01, "coarse_steps": 10, "coarse_label": "0.1", "format": "%.2f"},
-	"p1": {"min": -100, "max": 100, "default": 0, "step": 0.01, "coarse_steps": 10, "coarse_label": "0.1", "format": "%.2f"},
-	"p2": {"min": -100, "max": 100, "default": 0, "step": 0.01, "coarse_steps": 10, "coarse_label": "0.1", "format": "%.2f"},
-	"k3": {"min": -100, "max": 100, "default": 0, "step": 0.01, "coarse_steps": 10, "coarse_label": "0.1", "format": "%.2f"},
+	"k1": {"name": "Primary radial (k1)", "min": -100, "max": 100, "default": 0, "step": 0.01, "coarse_steps": 10, "coarse_label": "0.1", "format": "%.2f"},
+	"k2": {"name": "Secondary radial (k2)", "min": -100, "max": 100, "default": 0, "step": 0.01, "coarse_steps": 10, "coarse_label": "0.1", "format": "%.2f"},
+	"p1": {"name": "Tangential 1 (p1)", "min": -100, "max": 100, "default": 0, "step": 0.01, "coarse_steps": 10, "coarse_label": "0.1", "format": "%.2f"},
+	"p2": {"name": "Tangential 2 (p2)", "min": -100, "max": 100, "default": 0, "step": 0.01, "coarse_steps": 10, "coarse_label": "0.1", "format": "%.2f"},
+	"k3": {"name": "Outer-edge radial (k3)", "min": -100, "max": 100, "default": 0, "step": 0.01, "coarse_steps": 10, "coarse_label": "0.1", "format": "%.2f"},
 }
 
 var _simulation: Node
@@ -113,13 +113,13 @@ func _make_stepper(parameter: String) -> Control:
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 8)
 
+	var coefficient: Dictionary = COEFFICIENTS[parameter]
+
 	var label := Label.new()
-	label.text = parameter
-	label.add_theme_font_size_override("font_size", 22)
+	label.text = coefficient["name"]
+	label.add_theme_font_size_override("font_size", 20)
 	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(label)
-
-	var coefficient: Dictionary = COEFFICIENTS[parameter]
 	var coarse_step: int = coefficient["coarse_steps"]
 	var coarse_label: String = coefficient["coarse_label"]
 	var fine_label: String = (coefficient["format"] as String) % coefficient["step"]
