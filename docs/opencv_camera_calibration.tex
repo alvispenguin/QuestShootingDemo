@@ -49,17 +49,15 @@ The desired source coordinate satisfies
 \begin{equation}
   \mathbf{d}(\mathbf{x})=\mathbf{q}.
 \end{equation}
-The shader solves this with four Newton iterations, initialized at
+The shader solves this with eight Newton iterations, initialized at
 $\mathbf{x}_0=\mathbf{q}$:
 \begin{align}
   \mathbf{r}_n &= \mathbf{d}(\mathbf{x}_n)-\mathbf{q},\\
   \mathbf{x}_{n+1} &=
   \mathbf{x}_n-\mathbf{J}(\mathbf{x}_n)^{-1}\mathbf{r}_n,
 \end{align}
-where $\mathbf{J}$ is the Jacobian of the forward map. Four iterations reduce
-the mobile XR shader cost. If a determinant is too close to zero, a correction
-is too large, or the resulting coordinates are invalid, the shader abandons the
-inverse mapping for that pixel and displays the original image coordinate.
+where $\mathbf{J}$ is the Jacobian of the forward map. If its determinant is
+too close to zero, that iteration is skipped.
 
 For completeness, write
 \begin{align}

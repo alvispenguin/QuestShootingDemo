@@ -4,8 +4,8 @@ render_mode unshaded, depth_test_disabled, depth_draw_never, cull_disabled, fog_
 uniform sampler2D screen_texture : hint_screen_texture, filter_linear;
 uniform float k1 : hint_range(-1.0, 1.0) = 0.0;
 uniform float k2 : hint_range(-1.0, 1.0) = 0.0;
-uniform float p1 : hint_range(-1.0, 1.0) = 0.0;
-uniform float p2 : hint_range(-1.0, 1.0) = 0.0;
+uniform float p1 : hint_range(-0.1, 0.1) = 0.0;
+uniform float p2 : hint_range(-0.1, 0.1) = 0.0;
 uniform float k3 : hint_range(-1.0, 1.0) = 0.0;
 
 varying vec2 view_center;
@@ -53,58 +53,24 @@ vec4 distortion_jacobian(vec2 point) {
 	return vec4(j11, j12, j21, j22);
 }
 
-bool is_finite(float value) {
-	return abs(value) <= 1.0e20;
-}
-
-bool is_finite_point(vec2 point) {
-	return is_finite(point.x) && is_finite(point.y);
-}
-
 void fragment() {
 	vec2 focal = vec2(PROJECTION_MATRIX[0][0], PROJECTION_MATRIX[1][1]);
-	vec2 distorted_point = (SCREEN_UV - view_center) * vec2(2.0, -2.0) / max(focal, vec2(0.001));
+	vec2 distorted_point = (SCREEN_UV - view_center) * vec2(2.0, -2.0) / focal;
 	vec2 undistorted_point = distorted_point;
-	bool inverse_valid = is_finite_point(undistorted_point);
 
-	for (int iteration = 0; iteration < 4; iteration++) {
-		if (!inverse_valid) {
-			break;
-		}
-
+	for (int iteration = 0; iteration < 8; iteration++) {
 		vec2 residual = distort_point(undistorted_point) - distorted_point;
 		vec4 jacobian = distortion_jacobian(undistorted_point);
 		float jacobian_determinant = jacobian.x * jacobian.w - jacobian.y * jacobian.z;
-
-		if (!is_finite_point(residual) || !is_finite(jacobian_determinant)
-				|| abs(jacobian_determinant) <= 0.0001) {
-			inverse_valid = false;
-			break;
-		}
-
-		vec2 correction = vec2(
-			jacobian.w * residual.x - jacobian.y * residual.y,
-			-jacobian.z * residual.x + jacobian.x * residual.y
-		) / jacobian_determinant;
-		float correction_length = length(correction);
-		if (!is_finite(correction_length) || correction_length > 4.0) {
-			inverse_valid = false;
-			break;
-		}
-
-		correction = clamp(correction, vec2(-0.5), vec2(0.5));
-		undistorted_point -= correction;
-		inverse_valid = is_finite_point(undistorted_point)
-			&& all(lessThan(abs(undistorted_point), vec2(4.0)));
-	}
-
-	vec2 source_uv = SCREEN_UV;
-	if (inverse_valid) {
-		vec2 candidate_uv = view_center + undistorted_point * focal * vec2(0.5, -0.5);
-		if (is_finite_point(candidate_uv)) {
-			source_uv = clamp(candidate_uv, vec2(0.001), vec2(0.999));
+		if (abs(jacobian_determinant) > 0.000001) {
+			vec2 correction = vec2(
+				jacobian.w * residual.x - jacobian.y * residual.y,
+				-jacobian.z * residual.x + jacobian.x * residual.y
+			) / jacobian_determinant;
+			undistorted_point -= correction;
 		}
 	}
 
-	ALBEDO = texture(screen_texture, source_uv).rgb;
+	vec2 source_uv = view_center + undistorted_point * focal * vec2(0.5, -0.5);
+	ALBEDO = texture(screen_texture, clamp(source_uv, vec2(0.001), vec2(0.999))).rgb;
 }

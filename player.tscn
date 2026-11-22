@@ -51,5 +51,4 @@ script = ExtResource("11_panel_anchor")
 scene = ExtResource("10_panel_ui")
 screen_size = Vector2(0.8, 0.6)
 viewport_size = Vector2(800, 600)
-collision_layer = 5242880
 unshaded = true
