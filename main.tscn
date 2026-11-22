@@ -45,6 +45,7 @@
 [ext_resource type="PackedScene" uid="uid://d4n4ub6itgrys" path="res://Sci-Fi_Starter_Kit/Prefabs/Roof_Glass_01_6x6Glass.tscn" id="43_3ox4t"]
 [ext_resource type="PackedScene" uid="uid://d4n4ub6itgubm" path="res://Sci-Fi_Starter_Kit/Prefabs/Wall_Inclined_02_Long.tscn" id="44_4fmho"]
 [ext_resource type="PackedScene" uid="uid://d4n4ub6itgube" path="res://Sci-Fi_Starter_Kit/Prefabs/Wall_Inclined_02_LongGlass.tscn" id="45_aivy6"]
+[ext_resource type="PackedScene" uid="uid://d4n4ub6itgp7u" path="res://Sci-Fi_Starter_Kit/Prefabs/Word_Area.tscn" id="46_bil4k"]
 [ext_resource type="PackedScene" uid="uid://d4n4ub6itgtbm" path="res://Sci-Fi_Starter_Kit/Prefabs/Floor_Third_01_Strip_2x6.tscn" id="47_hnquj"]
 [ext_resource type="PackedScene" uid="uid://d4n4ub6itgyvo" path="res://Sci-Fi_Starter_Kit/Prefabs/Wall_Simple_02_Long.tscn" id="48_0h8y2"]
 [ext_resource type="PackedScene" uid="uid://d4n4ub6itgk2w" path="res://Sci-Fi_Starter_Kit/Prefabs/Wall_Simple_03_Long.tscn" id="49_nycv6"]
@@ -8677,6 +8678,9 @@ transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -53, 0, 20)
 [node name="Word_Area" type="Node3D" parent="_Level/Prefab_Control_Room" unique_id=1129813478]
 transform = Transform3D(0, 0, -0.1474, 0.08936, 0.11722, 0, 0.11722, -0.08936, 0, 18.007, 3.325, -2.048)
 
+[node name="Word_Area" parent="_Level/Prefab_Control_Room/Word_Area" unique_id=552373357 instance=ExtResource("46_bil4k")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, -2.77, 0)
+
 [node name="Floor_Coin_01_Small" type="Node3D" parent="_Level/Prefab_Control_Room" unique_id=363511228]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -5, -2)
 
@@ -11011,6 +11015,9 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 [node name="Sign_Danger_01" type="Node3D" parent="_Level/Prefab_Control_Room/Wall_Pipes_01_Large" unique_id=1378028541]
 transform = Transform3D(0.14303, 0, 0, 0, 0.14303, 0, 0, 0, 0.14303, 1.428, 2.439, 3.795)
 
+[node name="Sign_Danger_01" parent="_Level/Prefab_Control_Room/Wall_Pipes_01_Large/Sign_Danger_01" unique_id=879986182 instance=ExtResource("28_37eu1")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+
 [node name="Light_SideLight_03" type="Node3D" parent="_Level/Prefab_Control_Room/Wall_Pipes_01_Large" unique_id=1092707394]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47, 1.6694, 2.7396)
 
@@ -11034,6 +11041,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -5, -8)
 
 [node name="Sign_Danger_01" type="Node3D" parent="_Level/Prefab_Control_Room/Wall_Pipes_02_Large" unique_id=1190950154]
 transform = Transform3D(0.14303, 0, 0, 0, 0.14303, 0, 0, 0, 0.14303, 1.428, 2.439, 3.745)
+
+[node name="Sign_Danger_01" parent="_Level/Prefab_Control_Room/Wall_Pipes_02_Large/Sign_Danger_01" unique_id=488470126 instance=ExtResource("28_37eu1")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 
 [node name="Wall_Pipes_02_Large" parent="_Level/Prefab_Control_Room/Wall_Pipes_02_Large" unique_id=456120613 instance=ExtResource("30_ve5sr")]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -25876,14 +25886,26 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 [node name="Grid_01_3451" type="Node3D" parent="_Level/Prefab_Room_Large_02" unique_id=1168194323]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -16.211, 5, 13.963)
 
+[node name="Grid_01" parent="_Level/Prefab_Room_Large_02/Grid_01_3451" unique_id=1451608621 instance=ExtResource("109_2gd4m")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+
 [node name="Grid_01_3453" type="Node3D" parent="_Level/Prefab_Room_Large_02" unique_id=1262903385]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -13.781, 5, 13.963)
+
+[node name="Grid_01" parent="_Level/Prefab_Room_Large_02/Grid_01_3453" unique_id=770510487 instance=ExtResource("109_2gd4m")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 
 [node name="Grid_01_3455" type="Node3D" parent="_Level/Prefab_Room_Large_02" unique_id=1180670955]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -13.78, 5, 32.054)
 
+[node name="Grid_01" parent="_Level/Prefab_Room_Large_02/Grid_01_3455" unique_id=25130577 instance=ExtResource("109_2gd4m")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+
 [node name="Grid_01_3457" type="Node3D" parent="_Level/Prefab_Room_Large_02" unique_id=1881114900]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -16.21, 5, 32.054)
+
+[node name="Grid_01" parent="_Level/Prefab_Room_Large_02/Grid_01_3457" unique_id=741465926 instance=ExtResource("109_2gd4m")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 
 [node name="Light_Corridor_02_3459" type="Node3D" parent="_Level/Prefab_Room_Large_02" unique_id=579263671]
 transform = Transform3D(0.41696, 0, 0, 0, 0.41696, 0, 0, 0, 0.41696, 32.479, 3.264, 14.043)
@@ -32807,6 +32829,9 @@ transform = Transform3D(0.18404, 0, 0, 0, 0.11076, -0.14698, 0, 0.14698, 0.11076
 
 [node name="Airing_01" type="Node3D" parent="_Static_Animated  (Static ON For Lightmap - OFF for playing)/Airing_01_4703" unique_id=1874308528]
 
+[node name="Airing_01" parent="_Static_Animated  (Static ON For Lightmap - OFF for playing)/Airing_01_4703/Airing_01" unique_id=622077281 instance=ExtResource("114_fd6dt")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+
 [node name="Propeller" parent="_Static_Animated  (Static ON For Lightmap - OFF for playing)/Airing_01_4703/Airing_01" unique_id=2064052860 instance=ExtResource("115_gttkg")]
 transform = Transform3D(1, 0, 0, 0, 0.00035, 1, 0, -1, 0.00035, 0, -0.5, 0)
 
@@ -32814,6 +32839,9 @@ transform = Transform3D(1, 0, 0, 0, 0.00035, 1, 0, -1, 0.00035, 0, -0.5, 0)
 transform = Transform3D(0.18404, 0, 0, 0, 0.11037, -0.14727, 0, 0.14727, 0.11037, -67.996, 2.624, 18.535)
 
 [node name="Airing_01" type="Node3D" parent="_Static_Animated  (Static ON For Lightmap - OFF for playing)/Airing_01_4708" unique_id=924948364]
+
+[node name="Airing_01" parent="_Static_Animated  (Static ON For Lightmap - OFF for playing)/Airing_01_4708/Airing_01" unique_id=1022322824 instance=ExtResource("114_fd6dt")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 
 [node name="Propeller" parent="_Static_Animated  (Static ON For Lightmap - OFF for playing)/Airing_01_4708/Airing_01" unique_id=1597444486 instance=ExtResource("115_gttkg")]
 transform = Transform3D(1, 0, 0, 0, 0.00035, 1, 0, -1, 0.00035, 0, -0.5, 0)
@@ -32823,6 +32851,9 @@ transform = Transform3D(0.18404, 0, 0, 0, 0.11107, 0.14675, 0, -0.14675, 0.11107
 
 [node name="Airing_01" type="Node3D" parent="_Static_Animated  (Static ON For Lightmap - OFF for playing)/Airing_01_4713" unique_id=2002553657]
 
+[node name="Airing_01" parent="_Static_Animated  (Static ON For Lightmap - OFF for playing)/Airing_01_4713/Airing_01" unique_id=1858787011 instance=ExtResource("114_fd6dt")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+
 [node name="Propeller" parent="_Static_Animated  (Static ON For Lightmap - OFF for playing)/Airing_01_4713/Airing_01" unique_id=1897472449 instance=ExtResource("115_gttkg")]
 transform = Transform3D(1, 0, 0, 0, 0.00035, 1, 0, -1, 0.00035, 0, -0.5, 0)
 
@@ -32830,6 +32861,9 @@ transform = Transform3D(1, 0, 0, 0, 0.00035, 1, 0, -1, 0.00035, 0, -0.5, 0)
 transform = Transform3D(0.18404, 0, 0, 0, 0.11107, 0.14675, 0, -0.14675, 0.11107, -62.98, 2.626, -0.525)
 
 [node name="Airing_01" type="Node3D" parent="_Static_Animated  (Static ON For Lightmap - OFF for playing)/Airing_01_4718" unique_id=18715566]
+
+[node name="Airing_01" parent="_Static_Animated  (Static ON For Lightmap - OFF for playing)/Airing_01_4718/Airing_01" unique_id=1579414940 instance=ExtResource("114_fd6dt")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 
 [node name="Propeller" parent="_Static_Animated  (Static ON For Lightmap - OFF for playing)/Airing_01_4718/Airing_01" unique_id=1597060993 instance=ExtResource("115_gttkg")]
 transform = Transform3D(1, 0, 0, 0, 0.00035, 1, 0, -1, 0.00035, 0, -0.5, 0)
