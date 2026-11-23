@@ -17,6 +17,7 @@ var _panel_anchor: Node3D
 var _panel_surface: Node
 var _values: Dictionary = {}
 var _value_labels: Dictionary = {}
+var _button_theme: Theme
 var _dragging := false
 
 func _ready() -> void:
@@ -33,6 +34,7 @@ func _ready() -> void:
 	_create_ui()
 
 func _create_ui() -> void:
+	_button_theme = _create_button_theme()
 	var panel := PanelContainer.new()
 	panel.name = "ControlPanel"
 	panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -76,6 +78,7 @@ func _create_ui() -> void:
 	vbox.add_child(calibration_note)
 
 	var enabled := Button.new()
+	enabled.theme = _button_theme
 	enabled.toggle_mode = true
 	enabled.text = "Simulation: ON"
 	enabled.button_pressed = true
@@ -92,11 +95,47 @@ func _create_ui() -> void:
 		vbox.add_child(_make_stepper(parameter))
 
 	var reset_btn := Button.new()
+	reset_btn.theme = _button_theme
 	reset_btn.text = "Reset Coefficients to Zero"
 	reset_btn.custom_minimum_size = Vector2(0, 44)
 	reset_btn.add_theme_font_size_override("font_size", 20)
 	reset_btn.pressed.connect(_on_reset)
 	vbox.add_child(reset_btn)
+
+func _create_button_theme() -> Theme:
+	var button_theme := Theme.new()
+	button_theme.set_stylebox("normal", "Button", _make_button_style(
+		Color(0.10, 0.19, 0.27), Color(0.27, 0.57, 0.68)))
+	button_theme.set_stylebox("hover", "Button", _make_button_style(
+		Color(0.16, 0.34, 0.43), Color(0.45, 0.91, 1.0)))
+	button_theme.set_stylebox("pressed", "Button", _make_button_style(
+		Color(0.05, 0.38, 0.47), Color(0.35, 0.92, 1.0)))
+	button_theme.set_stylebox("hover_pressed", "Button", _make_button_style(
+		Color(0.09, 0.49, 0.57), Color(0.70, 1.0, 1.0)))
+	button_theme.set_stylebox("disabled", "Button", _make_button_style(
+		Color(0.09, 0.11, 0.14), Color(0.26, 0.30, 0.33)))
+
+	var focus := _make_button_style(Color.TRANSPARENT, Color(0.85, 1.0, 1.0))
+	focus.draw_center = false
+	button_theme.set_stylebox("focus", "Button", focus)
+	button_theme.set_color("font_color", "Button", Color(0.93, 0.97, 1.0))
+	button_theme.set_color("font_hover_color", "Button", Color.WHITE)
+	button_theme.set_color("font_pressed_color", "Button", Color.WHITE)
+	button_theme.set_color("font_hover_pressed_color", "Button", Color.WHITE)
+	button_theme.set_color("font_disabled_color", "Button", Color(0.52, 0.56, 0.59))
+	return button_theme
+
+func _make_button_style(background: Color, border: Color) -> StyleBoxFlat:
+	var style := StyleBoxFlat.new()
+	style.bg_color = background
+	style.border_color = border
+	style.set_border_width_all(2)
+	style.set_corner_radius_all(6)
+	style.content_margin_left = 2.0
+	style.content_margin_top = 2.0
+	style.content_margin_right = 2.0
+	style.content_margin_bottom = 2.0
+	return style
 
 func _on_drag_handle_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -140,6 +179,7 @@ func _make_stepper(parameter: String) -> Control:
 
 func _make_step_button(label: String, parameter: String, delta: int) -> Button:
 	var button := Button.new()
+	button.theme = _button_theme
 	button.text = label
 	button.custom_minimum_size = Vector2(76, 56)
 	button.add_theme_font_size_override("font_size", 20)
