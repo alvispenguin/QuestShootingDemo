@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="1"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d_body.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/pal_controls.tscn" id="3"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_panel"]
+resource_local_to_scene = true
+size = Vector2(0.8, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape_panel"]
+resource_local_to_scene = true
+size = Vector3(0.8, 0.4, 0.02)
+
+[node name="PALControls3D" type="Node3D"]
+script = ExtResource("1")
+screen_size = Vector2(0.8, 0.4)
+viewport_size = Vector2(800, 400)
+collision_layer = 5242880
+scene = ExtResource("3")
+unshaded = true
+
+[node name="Viewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(800, 400)
+render_target_update_mode = 1
+
+[node name="Screen" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_panel")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 5242880
+collision_mask = 0
+script = ExtResource("2")
+screen_size = Vector2(0.8, 0.4)
+viewport_size = Vector2(800, 400)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+position = Vector3(0, 0, -0.01)
+shape = SubResource("BoxShape_panel")

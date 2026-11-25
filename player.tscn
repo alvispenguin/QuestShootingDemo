@@ -6,10 +6,29 @@
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="2_hqtel"]
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="2_i3pqv"]
 [ext_resource type="Script" uid="uid://buagi0q1adb82" path="res://right_hand_controller.gd" id="4_sweqy"]
+[ext_resource type="Shader" path="res://shaders/pal_distortion.gdshader" id="5_pal_shader"]
+[ext_resource type="PackedScene" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="6_pointer"]
+[ext_resource type="PackedScene" path="res://scenes/pal_controls_3d.tscn" id="7_pal_panel"]
+[ext_resource type="Script" path="res://scripts/pal_panel_anchor.gd" id="8_pal_anchor"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pal"]
+render_priority = -128
+shader = ExtResource("5_pal_shader")
+shader_parameter/strength = 0.2
+
+[sub_resource type="QuadMesh" id="QuadMesh_pal"]
+size = Vector2(2, 2)
 
 [node name="XROrigin3D" type="XROrigin3D" unique_id=31731761]
 
 [node name="XRCamera3D" type="XRCamera3D" parent="." unique_id=929623543]
+
+[node name="PALDistortion" type="MeshInstance3D" parent="XRCamera3D"]
+visible = false
+material_override = SubResource("ShaderMaterial_pal")
+extra_cull_margin = 16384.0
+cast_shadow = 0
+mesh = SubResource("QuadMesh_pal")
 
 [node name="LeftHandController" type="XRController3D" parent="." unique_id=1714043104]
 tracker = &"left_hand"
@@ -29,4 +48,13 @@ bullet_scene = ExtResource("2_2hs0m")
 [node name="RightHand" parent="RightHandController" unique_id=1199403658 instance=ExtResource("2_i3pqv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10430491, 0, 0)
 
+[node name="FunctionPointer" parent="RightHandController" instance=ExtResource("6_pointer")]
+active_button_action = "by_button"
+show_target = true
+
 [node name="FunctionPickup" parent="RightHandController/RightHand" unique_id=1951988662 instance=ExtResource("2_hqtel")]
+
+[node name="PALPanelAnchor" type="Node3D" parent="."]
+script = ExtResource("8_pal_anchor")
+
+[node name="PALControls3D" parent="PALPanelAnchor" instance=ExtResource("7_pal_panel")]

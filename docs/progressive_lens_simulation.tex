@@ -1,0 +1,100 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{xurl}
+\title{Progressive-Lens-Inspired Distortion in VR}
+\author{Quest Shooting Demo}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Scope and safety}
+This project applies a controllable, \emph{illustrative} image warp to the
+rendered virtual scene. It is inspired by the approach in Stein et al.,
+``Simulating Lens Distortion in Virtual Reality'' (2020), not a reproduction
+of their measured progressive addition lens (PAL). The paper's fitted
+coefficients and measured displacement map are not supplied in the paper
+images. The constants in this implementation are design choices, not
+calibration data, clinical measurements, or verified Quest optics. The
+simulation starts off. Stop using it if you experience discomfort.
+
+\section{What: optics and the paper's method}
+A progressive addition lens varies optical power across its surface, providing
+regions intended for distance and near viewing with a transition corridor.
+Outside that corridor the lens can introduce spatially varying optical
+aberrations and image displacement. The mapping from the scene to the retinal
+image can therefore vary across the visual field; it is not generally a
+simple, rotationally symmetric camera-lens distortion.
+
+Stein et al.\ measured a lens distortion map on a grid, fit two polynomial
+functions for horizontal and vertical displacement, and used a pixel shader to
+sample the undistorted scene at displaced positions. Their experiment applied
+the same distortion to both eyes. They reported a statistically significant
+effect on heading estimates in their study; that finding does not validate our
+illustrative model. The paper describes a fifth-order polynomial family,
+whereas the formulas below are a deliberately simple third-order example and
+are not the authors' fitted functions.
+
+\section{How: the implemented displacement}
+For each eye's screen texture, let $\mathbf{q}=(u,v)$ be the output pixel's
+normalized texture coordinates, with $(0,0)$ at the upper-left and $(1,1)$ at
+the lower-right. Define
+\begin{equation}
+ x=2u-1,\qquad y=2v-1,\qquad L=\frac{y+1}{2}.
+\end{equation}
+Here $x$ and $y$ run from $-1$ to $1$, and $L$ grows from zero at the top
+to one at the bottom. The implemented source-coordinate displacements are
+\begin{align}
+ \Delta u &= s(0.08)xL^2,\\
+ \Delta v &= s(0.04)x^2(1+y),
+\end{align}
+where $s$ is the user-controlled dimensionless strength. The source position
+and output color are
+\begin{equation}
+ \mathbf{q}_{\mathrm{src}}=
+ \operatorname{clamp}\bigl(\mathbf{q}+(\Delta u,\Delta v),\,0.001,\,0.999\bigr),
+ \qquad C_{\mathrm{out}}(\mathbf{q})=C_{\mathrm{in}}(\mathbf{q}_{\mathrm{src}}).
+\end{equation}
+The clamp is component-wise and avoids reading beyond the image; near an edge
+it can stretch the border. This is a \emph{backward} or pull sampling map:
+the displacement identifies where an output pixel reads from, not where a
+source feature moves. Visible feature motion is therefore generally opposite
+the sampling displacement. The same UV-space formula is used for both eyes; it
+does not use gaze tracking or independently measured per-eye lens maps.
+
+For example, at $(u,v)=(0.75,0.75)$, $(x,y)=(0.5,0.5)$ and $L=0.75$.
+The displacement is $s(0.0225,0.015)$. At $s=0.2$, the source coordinate is
+shifted by $(0.0045,0.003)$ in texture units.
+The effect is off on launch. Right-controller A hides or shows the panel and B
+interacts with it. The on/off button controls the effect; strength runs from
+0.0 to 1.0 in steps of 0.1, and reset restores 0.2. A zero strength is an
+identity mapping except at the clamped image boundary.
+
+\section{Why: optical interpretation and limitations}
+The horizontal function is odd in $x$, so its sampling displacement has
+opposite signs on the left and right sides. The vertical function is even in
+$x$, producing matching vertical sampling displacement on both sides. Both
+grow toward the lower image and vanish on the centerline, giving a
+qualitatively asymmetric, peripheral warp inspired by a progressive lens's
+nonuniform field. The factors 0.08 and 0.04 set the relative magnitudes of
+these illustrative terms; $s$ scales both together. They have not been
+inferred from a physical lens.
+
+The shader does not trace rays through an optical prescription, simulate
+depth-dependent refraction, blur or astigmatic point-spread functions, eye
+rotation, or a changing gaze position. It modifies the opaque rendered scene
+texture, not the headset's real-world passthrough feed; transparent objects
+and UI may not be included. A PAL-specific map requires measured or
+ray-traced data, the lens/eye geometry, and careful coordinate conventions.
+An accurate stereo reproduction can require different maps for each eye.
+Neither fitting a polynomial nor adding a screen warp establishes perceptual
+or clinical validity; validate against independent measurements, both eyes,
+and user comfort.
+
+\section{Reference}
+N. Stein, K. Rifai, S. Wahl, and M. Lappe, ``Simulating Lens Distortion in
+Virtual Reality,'' Proceedings of the 13th ICDVRAT with ITAG, 2020,
+\url{https://niklas-hypki.de/Files/LensDistortion.pdf}.
+\end{document}
