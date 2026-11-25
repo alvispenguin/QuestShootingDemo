@@ -9397,9 +9397,6 @@ transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 2, 0, 0)
 [node name="Wall_Inclined_02_Long" parent="_Level/Prefab_Control_Room/Wall_Inclined_02_Long" unique_id=996567586 instance=ExtResource("44_4fmho")]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 
-[node name="Glass" parent="_Level/Prefab_Control_Room/Wall_Inclined_02_Long/Wall_Inclined_02_Long" unique_id=1971602361 instance=ExtResource("45_aivy6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.91064, -3, 2.4607)
-
 [node name="Point light" type="OmniLight3D" parent="_Level/Prefab_Control_Room/Wall_Inclined_02_Long" unique_id=121713673]
 transform = Transform3D(-0.78136, 0, -1.57336, 0, 1.75669, 0, 1.57336, 0, -0.78136, -1.13055, 2.73364, 4.36993)
 light_color = Color(1, 0.7494929, 0.3014706, 1)
@@ -9594,9 +9591,6 @@ transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 2, 0, -18)
 [node name="Wall_Inclined_02_CoinLeft" type="Node3D" parent="_Level/Prefab_Control_Room/Wall_Inclined_02_CoinLeft" unique_id=1190973632]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 0)
 
-[node name="Glass" parent="_Level/Prefab_Control_Room/Wall_Inclined_02_CoinLeft/Wall_Inclined_02_CoinLeft" unique_id=981642610 instance=ExtResource("55_ryg4g")]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 6)
-
 [node name="Wall_Inclined_02_CoinLeft" parent="_Level/Prefab_Control_Room/Wall_Inclined_02_CoinLeft/Wall_Inclined_02_CoinLeft" unique_id=906435793 instance=ExtResource("56_oy6td")]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 
@@ -9751,9 +9745,6 @@ transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 8, 0, -24)
 [node name="Wall_Inclined_02_Long" parent="_Level/Prefab_Control_Room/Wall_Inclined_02_Long_665" unique_id=1864009268 instance=ExtResource("44_4fmho")]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 
-[node name="Glass" parent="_Level/Prefab_Control_Room/Wall_Inclined_02_Long_665/Wall_Inclined_02_Long" unique_id=476314812 instance=ExtResource("45_aivy6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.91064, -3, 2.4607)
-
 [node name="Point light" type="OmniLight3D" parent="_Level/Prefab_Control_Room/Wall_Inclined_02_Long_665" unique_id=1404143046]
 transform = Transform3D(-0.78136, 0, -1.57336, 0, 1.75669, 0, 1.57336, 0, -0.78136, -1.13055, 2.73364, 4.36993)
 light_color = Color(1, 0.7494929, 0.3014706, 1)
@@ -9839,9 +9830,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -24)
 [node name="Wall_Inclined_02_CoinLeft" type="Node3D" parent="_Level/Prefab_Control_Room/Wall_Inclined_02_CoinLeft_679" unique_id=1244215469]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 0)
 
-[node name="Glass" parent="_Level/Prefab_Control_Room/Wall_Inclined_02_CoinLeft_679/Wall_Inclined_02_CoinLeft" unique_id=1544969697 instance=ExtResource("55_ryg4g")]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 6)
-
 [node name="Wall_Inclined_02_CoinLeft" parent="_Level/Prefab_Control_Room/Wall_Inclined_02_CoinLeft_679/Wall_Inclined_02_CoinLeft" unique_id=638249413 instance=ExtResource("56_oy6td")]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 
@@ -9918,8 +9906,6 @@ transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 20, 0, -24)
 
 [node name="Wall_Inclined_02_CoinRight" parent="_Level/Prefab_Control_Room/Wall_Inclined_02_CoinRight_692" unique_id=383916446 instance=ExtResource("57_fe76k")]
 transform = Transform3D(0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0)
-
-[node name="Glass" parent="_Level/Prefab_Control_Room/Wall_Inclined_02_CoinRight_692/Wall_Inclined_02_CoinRight" unique_id=722400994 instance=ExtResource("58_p5pln")]
 
 [node name="Point light_Down" type="OmniLight3D" parent="_Level/Prefab_Control_Room/Wall_Inclined_02_CoinRight_692" unique_id=844081134]
 transform = Transform3D(-1.57336, 0, 0.78136, 0, 1.75669, 0, -0.78136, 0, -1.57336, -4.37, 0.07, -0.14)
@@ -10087,9 +10073,6 @@ transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 20, 0, -8)
 
 [node name="Wall_Inclined_02_CoinLeft" type="Node3D" parent="_Level/Prefab_Control_Room/Wall_Inclined_02_CoinLeft_718" unique_id=1957550953]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 0)
-
-[node name="Glass" parent="_Level/Prefab_Control_Room/Wall_Inclined_02_CoinLeft_718/Wall_Inclined_02_CoinLeft" unique_id=290920150 instance=ExtResource("55_ryg4g")]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 6)
 
 [node name="Wall_Inclined_02_CoinLeft" parent="_Level/Prefab_Control_Room/Wall_Inclined_02_CoinLeft_718/Wall_Inclined_02_CoinLeft" unique_id=1883712771 instance=ExtResource("56_oy6td")]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -12461,17 +12444,11 @@ transform = Transform3D(0, 0, -1, 0, 0.5, 0, 1, 0, 0, 10, 4, -22)
 [node name="Roof_Glass_01_6x6" parent="_Level/Prefab_Control_Room/Roof_Glass_01_6x6" unique_id=2041996920 instance=ExtResource("42_6seew")]
 transform = Transform3D(0, 0, -1, 1, 0, 0, 0, -1, 0, 0, 0, 0)
 
-[node name="Glass" parent="_Level/Prefab_Control_Room/Roof_Glass_01_6x6/Roof_Glass_01_6x6" unique_id=1064465213 instance=ExtResource("43_3ox4t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
-
 [node name="Roof_Glass_01_6x6_1191" type="Node3D" parent="_Level/Prefab_Control_Room" unique_id=1593101898]
 transform = Transform3D(0, 0, -1, 0, 0.5, 0, 1, 0, 0, 18, 4, -22)
 
 [node name="Roof_Glass_01_6x6" parent="_Level/Prefab_Control_Room/Roof_Glass_01_6x6_1191" unique_id=1056247688 instance=ExtResource("42_6seew")]
 transform = Transform3D(0, 0, -1, 1, 0, 0, 0, -1, 0, 0, 0, 0)
-
-[node name="Glass" parent="_Level/Prefab_Control_Room/Roof_Glass_01_6x6_1191/Roof_Glass_01_6x6" unique_id=676499147 instance=ExtResource("43_3ox4t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
 
 [node name="Light_Corridor_02_1194" type="Node3D" parent="_Level/Prefab_Control_Room" unique_id=800348028]
 transform = Transform3D(0.41696, 0, 0, 0, 0.41696, 0, 0, 0, 0.41696, 1.78, -1.71, -15.042)
