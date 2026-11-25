@@ -21,17 +21,104 @@ scene; it does not access the Quest camera feed or model Quest passthrough.
 It is not a headset display-lens correction. All coefficients default to zero
 because no calibration measurements have been supplied.
 
-\section{OpenCV forward distortion model}
-Let $(x,y)$ be undistorted normalized camera coordinates and
-$r^2=x^2+y^2$. The OpenCV documentation defines a radial scale and applies tangential
-distortion:
+\section{What: the optical model and its equations}
+\subsection{The ideal pinhole camera}
+In an ideal pinhole camera, a scene point with camera-space coordinates
+$(X,Y,Z)$ projects to the normalized image plane at
+\begin{equation}
+  x = X/Z, \qquad y = Y/Z.
+\end{equation}
+The coordinates $x$ and $y$ are dimensionless. With focal lengths $f_x,f_y$
+in pixels and principal point $(c_x,c_y)$, the ideal pixel position is
+\begin{equation}
+  u = f_x x + c_x, \qquad v = f_y y + c_y.
+\end{equation}
+The principal point is the image location associated with the camera's optical
+axis in this model; the focal lengths scale normalized coordinates into pixels.
+Straight lines in the scene that do not pass through the camera center project
+as straight lines in this ideal model.
+
+\subsection{Five-coefficient distortion}
+Real lenses can map rays to image positions differently from an ideal
+pinhole. Let $(x,y)$ be the ideal normalized coordinates and
+$r^2=x^2+y^2$ the squared distance from the optical axis. OpenCV's
+five-coefficient model maps the ideal point to the distorted point $(x_d,y_d)$:
 \begin{align}
   R(r) &= 1+k_1r^2+k_2r^4+k_3r^6,\\
   x_d &= xR(r)+2p_1xy+p_2(r^2+2x^2),\\
   y_d &= yR(r)+p_1(r^2+2y^2)+2p_2xy.
 \end{align}
-Here $k_1,k_2,k_3$ are radial coefficients and $p_1,p_2$ are tangential
-coefficients. In the OpenCV five-value ordering, the vector is
+The distorted pixel location is $u_d=f_xx_d+c_x$,
+$v_d=f_yy_d+c_y$. The coefficients are dimensionless under this normalized
+coordinate convention. They describe a mapping in the image plane; they are
+not lens radii, focal lengths, or physical displacements in millimeters.
+All-zero coefficients give $R=1$ and $(x_d,y_d)=(x,y)$.
+
+\section{How: what each coefficient does}
+\subsection{Radial distortion: $k_1$, $k_2$, and $k_3$}
+The radial terms multiply both image coordinates by the same scale $R(r)$.
+For radial distortion alone, when $R(r)>0$, the point stays on the ray from
+the image center, but its distance changes from $r$ to $r_d=rR(r)$. Hence its
+radial displacement is
+\begin{equation}
+  r_d-r=k_1r^3+k_2r^5+k_3r^7.
+\end{equation}
+\begin{itemize}
+  \item $k_1$ controls the lowest-order change of magnification with distance
+  from the center. It often has the largest visible effect near the center,
+  although the relative effect depends on all coefficients and on $r$.
+  \item $k_2$ adds a higher-order adjustment, proportional to $r^5$ in
+  radial displacement. It changes how the curvature evolves farther from the
+  center.
+  \item $k_3$ adds another higher-order adjustment, proportional to $r^7$.
+  Its effect grows faster with radius than the $k_1$ and $k_2$ terms, for
+  coefficients of comparable magnitude.
+\end{itemize}
+For example, with $k_1=0.1$, $k_2=k_3=p_1=p_2=0$, a point at
+$(x,y)=(0.5,0)$ has $R=1.025$ and moves to $(0.5125,0)$. A positive
+radial displacement produces a pincushion-like mapping; a negative one
+produces a barrel-like mapping. These descriptions depend on the net radial
+scale over the field of view, not on the sign of one coefficient alone.
+
+\subsection{Tangential distortion: $p_1$ and $p_2$}
+The tangential, or decentering, contribution is the difference
+\begin{align}
+  \Delta x_t &= 2p_1xy+p_2(r^2+2x^2),\\
+  \Delta y_t &= p_1(r^2+2y^2)+2p_2xy.
+\end{align}
+\begin{itemize}
+  \item $p_1$ controls one direction of decentering. It contributes
+  $2p_1xy$ horizontally and $p_1(r^2+2y^2)$ vertically.
+  \item $p_2$ controls the other direction. It contributes
+  $p_2(r^2+2x^2)$ horizontally and $2p_2xy$ vertically.
+\end{itemize}
+These terms can make the displacement asymmetric about the image center.
+Neither coefficient acts only on one image axis. For example, with
+$p_1=0.1$ and all other coefficients zero, $(0,0.5)$ maps to $(0,0.575)$.
+The two components can combine with each other and with radial distortion.
+
+\section{Why: the optical interpretation}
+Lens distortion is a \emph{geometric} aberration: image magnification varies
+across the field, shifting image points away from their ideal pinhole
+positions. A rotationally symmetric lens system can be approximated by a
+radial scale that depends on distance from the optical axis. The powers
+$r^2$, $r^4$, and $r^6$ provide successive terms for fitting how that scale
+changes across the image. Decentering or misalignment of lens elements can
+break radial symmetry; the two tangential terms provide a simple model for
+part of that asymmetric displacement.
+
+These are mathematical approximations fitted to observed image points, not a
+ray trace or a unique physical reconstruction of the lens. During calibration,
+known pattern points are matched to measured image locations and parameters are
+estimated to reduce reprojection error. Different lens designs, focus settings,
+and image geometry can require different coefficients or a more complex model.
+Good calibration images and residual checks are needed to judge whether this
+five-coefficient model fits a particular camera. Blur, chromatic aberration,
+noise, and Quest passthrough reconstruction are not explained by these
+geometric terms.
+
+The panel displays radial terms first: $k_1,k_2,k_3,p_1,p_2$. When supplying
+an OpenCV five-value distortion vector, its standard ordering is instead
 $(k_1,k_2,p_1,p_2,k_3)$.
 
 \section{Inverse mapping for the screen shader}
@@ -57,7 +144,9 @@ $\mathbf{x}_0=\mathbf{q}$:
   \mathbf{x}_n-\mathbf{J}(\mathbf{x}_n)^{-1}\mathbf{r}_n,
 \end{align}
 where $\mathbf{J}$ is the Jacobian of the forward map. If its determinant is
-too close to zero, that iteration is skipped.
+too close to zero, that iteration is skipped. Newton's method is an
+approximation: eight iterations do not guarantee a solution, especially for
+strong distortion or a mapping that is not one-to-one.
 
 For completeness, write
 \begin{align}
@@ -78,6 +167,9 @@ The shader converts screen UV to normalized camera coordinates using the
 projected view center and per-eye projection focal scales. It converts the
 recovered undistorted coordinate back to source UV and clamps the texture
 lookup to the image bounds.
+The per-eye projection parameters here are taken from the virtual camera;
+they are not measured Quest passthrough-camera intrinsics. The post-process
+warps the rendered image, not the physical objects in the scene.
 
 \section{Panel controls}
 The in-world panel exposes all five coefficients. Its ranges and increments
@@ -88,9 +180,9 @@ Coefficient & Range & Fine step & Coarse step\\
 \hline
 $k_1$ & $[-1,1]$ & $0.01$ & $0.1$\\
 $k_2$ & $[-1,1]$ & $0.01$ & $0.1$\\
+$k_3$ & $[-1,1]$ & $0.01$ & $0.1$\\
 $p_1$ & $[-1,1]$ & $0.01$ & $0.1$\\
-$p_2$ & $[-1,1]$ & $0.01$ & $0.1$\\
-$k_3$ & $[-1,1]$ & $0.01$ & $0.1$
+$p_2$ & $[-1,1]$ & $0.01$ & $0.1$
 \end{tabular}
 \end{center}
 All coefficient rows show the same controls from left to right:
@@ -106,5 +198,8 @@ mapping poorly conditioned or visibly distorted.
 The equations follow OpenCV's
 \href{https://github.com/opencv/opencv/blob/4.x/doc/py_tutorials/py_calib3d/py_calibration/py_calibration.markdown}
 {camera calibration tutorial}.
+The extended model and camera-coordinate conventions are described in the
+\href{https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html}
+{OpenCV camera calibration and 3D reconstruction reference}.
 
 \end{document}
