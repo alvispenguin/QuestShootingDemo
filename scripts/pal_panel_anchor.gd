@@ -30,3 +30,12 @@ func _on_controller_button_pressed(button_name: String) -> void:
 		_panel_visible = not _panel_visible
 		if _placement_ready:
 			_panel.visible = _panel_visible
+
+func move_panel_by_screen_delta(delta_pixels: Vector2, screen_size: Vector2, viewport_size: Vector2) -> void:
+	if viewport_size.x <= 0.0 or viewport_size.y <= 0.0:
+		push_error("PAL panel cannot be dragged with an invalid viewport size.")
+		return
+
+	var panel_basis := global_basis.orthonormalized()
+	global_position += panel_basis.x * (delta_pixels.x * screen_size.x / viewport_size.x)
+	global_position -= panel_basis.y * (delta_pixels.y * screen_size.y / viewport_size.y)

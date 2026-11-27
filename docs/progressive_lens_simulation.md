@@ -9,8 +9,8 @@ transparent objects and UI may not be included.
 The effect starts **off**. On the right controller, press **A** to show or
 hide the panel; point at it and press **B** to interact. Use the simulation
 button to turn the effect on or off. Strength is adjustable from 0.0 to 1.0
-in steps of 0.1; reset restores 0.2. The panel remains at its initial position.
-Bullets can pass through the panel.
+in steps of 0.1; reset restores 0.2. Drag the panel title bar to reposition
+it. Bullets can pass through the panel.
 
 Test both eyes and frame rate on the target headset. Stop if the effect causes
 discomfort; exaggerated distortion may be disorienting.

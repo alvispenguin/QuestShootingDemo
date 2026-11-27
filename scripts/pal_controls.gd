@@ -5,16 +5,23 @@ const MAX_STRENGTH_STEPS := 10
 
 var _effect: MeshInstance3D
 var _material: ShaderMaterial
+var _panel_anchor: Node3D
+var _panel_surface: XRToolsViewport2DIn3D
 var _strength_steps := DEFAULT_STRENGTH_STEPS
 var _strength_label: Label
 var _button_theme: Theme
+var _dragging := false
 
 func _ready() -> void:
 	_effect = get_node_or_null("../../../../XRCamera3D/PALDistortion") as MeshInstance3D
 	if _effect:
 		_material = _effect.material_override as ShaderMaterial
+	_panel_anchor = get_tree().root.find_child("PALPanelAnchor", true, false) as Node3D
+	_panel_surface = get_tree().root.find_child("PALControls3D", true, false) as XRToolsViewport2DIn3D
 	if not _effect or not _material:
 		push_error("PAL controls could not find the distortion effect or its material.")
+	if not _panel_anchor or not _panel_surface:
+		push_error("PAL controls could not find the movable panel anchor or surface.")
 	_create_ui()
 	_update_strength()
 
@@ -38,10 +45,26 @@ func _create_ui() -> void:
 	box.add_theme_constant_override("separation", 12)
 	panel.add_child(box)
 
+	var drag_handle := HBoxContainer.new()
+	drag_handle.custom_minimum_size.y = 40
+	drag_handle.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	drag_handle.mouse_filter = Control.MOUSE_FILTER_STOP
+	drag_handle.gui_input.connect(_on_drag_handle_gui_input)
+	box.add_child(drag_handle)
+
 	var title := Label.new()
 	title.text = "PROGRESSIVE LENS SIMULATION"
 	title.add_theme_font_size_override("font_size", 26)
-	box.add_child(title)
+	title.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	drag_handle.add_child(title)
+
+	var drag_hint := Label.new()
+	drag_hint.text = "  Drag to move"
+	drag_hint.add_theme_font_size_override("font_size", 16)
+	drag_hint.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	drag_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	drag_hint.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	drag_handle.add_child(drag_hint)
 
 	var note := Label.new()
 	note.text = "Illustrative only - not a calibrated lens."
@@ -49,7 +72,7 @@ func _create_ui() -> void:
 	box.add_child(note)
 
 	var instructions := Label.new()
-	instructions.text = "Right controller: A show/hide, B interact."
+	instructions.text = "A show/hide, B interact. Drag title bar to move."
 	instructions.add_theme_font_size_override("font_size", 18)
 	box.add_child(instructions)
 
@@ -107,6 +130,19 @@ func _create_ui() -> void:
 		_update_strength()
 	)
 	box.add_child(reset)
+
+func _on_drag_handle_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		_dragging = event.pressed
+		accept_event()
+	elif event is InputEventMouseMotion and _dragging:
+		if _panel_anchor and _panel_surface:
+			_panel_anchor.move_panel_by_screen_delta(
+				event.relative,
+				_panel_surface.screen_size,
+				_panel_surface.viewport_size
+			)
+		accept_event()
 
 func _create_button_theme() -> Theme:
 	var button_theme := Theme.new()
